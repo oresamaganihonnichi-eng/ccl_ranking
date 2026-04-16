@@ -6,1521 +6,737 @@
   <title>CCL Official Ranking</title>
   <meta name="description" content="CCL公式ランキングサイト｜週間活動ランキング・総合ランキング" />
   <style>
-    :root {
-      --bg: #050816;
-      --bg-2: #091224;
-      --panel: rgba(10, 18, 35, 0.84);
-      --panel-strong: rgba(9, 16, 31, 0.96);
-      --line: rgba(255,255,255,0.11);
-      --line-strong: rgba(255,255,255,0.18);
-      --text: #edf3ff;
-      --muted: #93a4c3;
-      --muted-2: #6f829f;
-      --gold-1: #fff4bf;
-      --gold-2: #f0c85c;
-      --gold-3: #b9831a;
-      --silver-1: #f8fbff;
-      --silver-2: #c7d2e2;
-      --silver-3: #8697b0;
-      --bronze-1: #ffd4b2;
-      --bronze-2: #cb8e52;
-      --bronze-3: #8a5427;
-      --blue-glow: rgba(76, 137, 255, 0.22);
-      --gold-glow: rgba(240, 200, 92, 0.22);
-      --shadow-xl:
-        0 24px 80px rgba(0, 0, 0, 0.55),
-        0 10px 30px rgba(0, 0, 0, 0.26);
-      --shadow-lg:
-        0 18px 50px rgba(0, 0, 0, 0.42),
-        0 8px 20px rgba(0, 0, 0, 0.22);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 18px;
-      --radius-sm: 14px;
-      --transition: 180ms ease;
-      --max-width: 1380px;
+    :root{
+      --bg:#03050c;
+      --bg2:#07101f;
+      --panel:rgba(8,14,27,.88);
+      --panel2:rgba(10,17,32,.96);
+      --line:rgba(255,255,255,.11);
+      --line2:rgba(255,255,255,.18);
+      --text:#f3f7ff;
+      --muted:#93a5c7;
+      --muted2:#6e81a0;
+      --blue:#5a84ff;
+      --blueGlow:rgba(90,132,255,.26);
+      --gold1:#fff4b6;
+      --gold2:#f1c95a;
+      --gold3:#b57a15;
+      --silver1:#fbfdff;
+      --silver2:#cbd7ea;
+      --silver3:#8193ad;
+      --bronze1:#ffd4af;
+      --bronze2:#cb8b49;
+      --bronze3:#854d1c;
+      --danger:#ffb2b2;
+      --ok:#7cf0a3;
+      --shadowXL:0 28px 90px rgba(0,0,0,.5),0 10px 28px rgba(0,0,0,.28);
+      --shadowLG:0 18px 50px rgba(0,0,0,.42),0 8px 20px rgba(0,0,0,.24);
+      --shadowMD:0 12px 28px rgba(0,0,0,.26);
+      --radiusXL:30px;
+      --radiusLG:24px;
+      --radiusMD:18px;
+      --radiusSM:14px;
+      --max:1380px;
+      --t:180ms ease;
     }
 
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family:
-        "Inter",
-        "Hiragino Sans",
-        "Hiragino Kaku Gothic ProN",
-        "Noto Sans JP",
-        "Yu Gothic UI",
-        "Segoe UI",
-        sans-serif;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:"Inter","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Segoe UI",sans-serif;
       background:
-        radial-gradient(circle at 20% -10%, rgba(68, 117, 217, 0.16), transparent 30%),
-        radial-gradient(circle at 80% 0%, rgba(194, 155, 56, 0.11), transparent 22%),
-        radial-gradient(circle at 50% 120%, rgba(66, 43, 133, 0.18), transparent 28%),
-        linear-gradient(180deg, #02040b 0%, #071120 28%, #08101e 55%, #04070f 100%);
-      min-height: 100vh;
-      letter-spacing: 0.01em;
+        radial-gradient(circle at 18% -10%, rgba(86,129,255,.16), transparent 28%),
+        radial-gradient(circle at 86% 0%, rgba(231,184,63,.12), transparent 20%),
+        radial-gradient(circle at 50% 120%, rgba(91,41,171,.18), transparent 28%),
+        linear-gradient(180deg, #010208 0%, #050b16 24%, #07101f 54%, #03050c 100%);
+      min-height:100vh;
+      letter-spacing:.01em;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%),
-        repeating-linear-gradient(
-          to right,
-          rgba(255,255,255,0.018) 0,
-          rgba(255,255,255,0.018) 1px,
-          transparent 1px,
-          transparent 96px
-        ),
-        repeating-linear-gradient(
-          to bottom,
-          rgba(255,255,255,0.014) 0,
-          rgba(255,255,255,0.014) 1px,
-          transparent 1px,
-          transparent 96px
-        );
-      opacity: 0.35;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.45));
+        linear-gradient(to bottom, rgba(255,255,255,.03), transparent 20%),
+        repeating-linear-gradient(to right, rgba(255,255,255,.018) 0, rgba(255,255,255,.018) 1px, transparent 1px, transparent 110px),
+        repeating-linear-gradient(to bottom, rgba(255,255,255,.013) 0, rgba(255,255,255,.013) 1px, transparent 1px, transparent 110px);
+      opacity:.33;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,.45));
     }
 
-    .wrap {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 28px 16px 70px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-      padding: 12px 18px;
-      border: 1px solid var(--line);
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px 14px 54px;position:relative;z-index:1}
+    .glass{
+      border:1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
-        rgba(7, 12, 24, 0.72);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      box-shadow: var(--shadow-lg);
+        linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)),
+        rgba(6,11,21,.82);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadowLG);
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:12px 16px;border-radius:18px;margin-bottom:14px;
     }
-
-    .brand-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{
+      width:46px;height:46px;border-radius:15px;display:grid;place-items:center;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 35%),
-        linear-gradient(145deg, #101c37, #070d1b);
-      display: grid;
-      place-items: center;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.12),
-        0 10px 24px rgba(0,0,0,0.35);
-      font-weight: 900;
-      color: #f7d36b;
-      letter-spacing: 0.08em;
-      font-size: 14px;
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 36%),
+        linear-gradient(145deg, #10203c, #07111f);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 10px 24px rgba(0,0,0,.32);
+      color:#f7d46f;font-weight:900;letter-spacing:.08em;font-size:14px;
     }
-
-    .brand-text {
-      min-width: 0;
+    .brand-copy{min-width:0}
+    .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+    .brand-title{font-size:16px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .trust{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:12px;color:var(--muted);white-space:nowrap;
     }
+    .dot{width:8px;height:8px;border-radius:999px;background:var(--ok);box-shadow:0 0 12px rgba(124,240,163,.55);flex:0 0 auto}
 
-    .brand-text .eyebrow {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-      white-space: nowrap;
-    }
-
-    .brand-text .title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #f8fbff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .trust-strip {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .trust-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .trust-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #7ef2a8;
-      box-shadow: 0 0 12px rgba(126,242,168,0.55);
-      flex: 0 0 auto;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.12);
+    .hero{
+      position:relative;overflow:hidden;border-radius:30px;padding:22px 22px 18px;margin-bottom:16px;
+      border:1px solid rgba(255,255,255,.12);
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
-        radial-gradient(circle at 20% 20%, rgba(72, 115, 215, 0.20), transparent 28%),
-        radial-gradient(circle at 85% 18%, rgba(226, 179, 63, 0.16), transparent 22%),
-        linear-gradient(180deg, rgba(6,11,22,0.98), rgba(5,9,18,0.93));
-      box-shadow: var(--shadow-xl);
-      padding: 34px 26px 24px;
-      margin-bottom: 22px;
-      isolation: isolate;
+        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.01)),
+        radial-gradient(circle at 20% 16%, rgba(88,128,255,.18), transparent 28%),
+        radial-gradient(circle at 85% 16%, rgba(231,184,63,.14), transparent 20%),
+        linear-gradient(180deg, rgba(5,9,18,.96), rgba(5,10,19,.9));
+      box-shadow:var(--shadowXL);
+      isolation:isolate;
     }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto;
-      pointer-events: none;
-      z-index: 0;
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(12px)}
+    .hero::before{width:260px;height:260px;right:-60px;top:-100px;background:radial-gradient(circle, rgba(241,201,90,.18), transparent 66%)}
+    .hero::after{width:280px;height:280px;left:-80px;bottom:-120px;background:radial-gradient(circle, rgba(90,132,255,.18), transparent 68%)}
+    .hero-grid{
+      position:relative;z-index:1;
+      display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:16px;align-items:stretch;
     }
-
-    .hero::before {
-      top: -80px;
-      right: -40px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(241, 203, 93, 0.15), transparent 68%);
-      filter: blur(8px);
+    .hero-main{display:flex;flex-direction:column;gap:14px}
+    .hero-label{
+      display:inline-flex;align-items:center;gap:10px;width:max-content;padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.035);
+      color:#dfe9ff;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
     }
-
-    .hero::after {
-      left: -70px;
-      bottom: -100px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(85, 132, 255, 0.18), transparent 68%);
-      filter: blur(10px);
+    .hero h1{
+      margin:0;font-size:clamp(32px,4.9vw,64px);line-height:1.02;font-weight:950;letter-spacing:.04em;
+      text-shadow:0 10px 30px rgba(0,0,0,.32);
     }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-      gap: 20px;
-      align-items: stretch;
+    .hero .accent{
+      display:block;
+      background:linear-gradient(180deg, #fff8de 0%, #f1c95a 58%, #b57a15 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
     }
-
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      min-width: 0;
+    .hero p{margin:0;color:#a9bad6;font-size:15px;line-height:1.75;max-width:820px}
+    .hero-stats{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;
     }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      width: fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.035);
-      color: #dbe7ff;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(34px, 5vw, 62px);
-      line-height: 1.02;
-      letter-spacing: 0.06em;
-      font-weight: 900;
-      color: #f9fbff;
-      text-shadow:
-        0 0 24px rgba(255,255,255,0.06),
-        0 12px 34px rgba(0,0,0,0.32);
-    }
-
-    .hero h1 .accent {
-      display: block;
-      background: linear-gradient(180deg, #fff8de 0%, #f0c95b 55%, #b6811f 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: none;
-    }
-
-    .hero p {
-      margin: 0;
-      max-width: 760px;
-      color: #a9b9d2;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .hero-stat {
-      border: 1px solid rgba(255,255,255,0.09);
+    .stat{
+      min-height:96px;padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.09);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-        rgba(7, 13, 27, 0.72);
-      border-radius: 18px;
-      padding: 14px 14px 13px;
-      min-height: 94px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)),
+        rgba(8,13,24,.72);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
     }
+    .stat .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .stat .v{margin-top:10px;font-size:26px;line-height:1;font-weight:950}
+    .stat .s{margin-top:8px;font-size:11px;color:var(--muted2)}
 
-    .hero-stat .label {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .hero-stat .value {
-      font-size: 24px;
-      font-weight: 900;
-      color: #f8fbff;
-      line-height: 1.1;
-    }
-
-    .hero-stat .sub {
-      font-size: 11px;
-      color: var(--muted-2);
-    }
-
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .signal-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.12);
+    .hero-side{display:flex;flex-direction:column;gap:12px}
+    .signal{
+      position:relative;overflow:hidden;padding:16px;border-radius:22px;border:1px solid rgba(255,255,255,.12);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-        rgba(5, 10, 21, 0.84);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-      padding: 18px 18px 16px;
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)),
+        rgba(6,11,21,.84);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
     }
-
-    .signal-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(240,200,92,0.95), rgba(255,255,255,0));
-      opacity: 0.9;
+    .signal::before{
+      content:"";position:absolute;left:0;right:0;top:0;height:2px;
+      background:linear-gradient(90deg, transparent, rgba(241,201,90,.95), transparent);
     }
-
-    .signal-title {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #dbe6f8;
-      margin-bottom: 10px;
+    .signal-title{font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#dfe9fb;margin-bottom:10px}
+    .count-main{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+    .count-main .big{font-size:36px;line-height:.95;font-weight:950}
+    .count-main .unit{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+    .count-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+    .count-chip{
+      border-radius:14px;padding:10px 8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.025);text-align:center;
     }
+    .count-chip .num{display:block;font-size:20px;font-weight:900}
+    .count-chip .txt{display:block;margin-top:4px;font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .signal p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
 
-    .countdown-main {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
+    .search-panel{
+      border-radius:24px;padding:16px;margin-bottom:14px;
     }
-
-    .countdown-main .big {
-      font-size: 38px;
-      line-height: 0.95;
-      font-weight: 900;
-      color: #f9fbff;
+    .search-grid{
+      display:grid;grid-template-columns:minmax(310px,.86fr) minmax(0,1.14fr);gap:14px;align-items:stretch;
     }
-
-    .countdown-main .unit {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 4px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .section-title{margin:0;font-size:20px;font-weight:950;letter-spacing:.04em}
+    .section-sub{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.7}
+    .search-form{
+      margin-top:14px;display:flex;flex-direction:column;gap:12px;
     }
-
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+    .search-row{
+      display:grid;grid-template-columns:minmax(0,1fr) 120px 108px;gap:10px;
     }
-
-    .count-chip {
-      padding: 10px 8px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.025);
-      text-align: center;
+    .field{
+      position:relative;
     }
-
-    .count-chip .num {
-      display: block;
-      font-size: 20px;
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.1;
+    .input,.select,.btn{
+      width:100%;height:56px;border-radius:18px;border:1px solid rgba(255,255,255,.12);outline:none;
+      font:inherit;transition:border-color var(--t), box-shadow var(--t), transform var(--t);
     }
-
-    .count-chip .txt {
-      display: block;
-      margin-top: 3px;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .input,.select{
+      color:var(--text);padding:0 16px;background:
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018)),
+        rgba(5,10,20,.92);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
     }
-
-    .signal-foot {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
+    .input{padding-right:50px;font-size:16px}
+    .input::placeholder{color:#72839d}
+    .input:focus,.select:focus{
+      border-color:rgba(90,132,255,.52);
+      box-shadow:0 0 0 4px rgba(90,132,255,.14),0 16px 35px rgba(0,0,0,.26);
+      transform:translateY(-1px);
     }
-
-    .search-section {
-      margin-bottom: 22px;
+    .select{appearance:none;background-image:
+      linear-gradient(45deg, transparent 50%, #8ca0c2 50%),
+      linear-gradient(135deg, #8ca0c2 50%, transparent 50%);
+      background-position:calc(100% - 20px) 23px, calc(100% - 14px) 23px;
+      background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:34px;
     }
-
-    .search-panel {
-      border: 1px solid rgba(255,255,255,0.11);
-      border-radius: 26px;
+    .search-icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;color:#8ca0c2;font-size:18px}
+    .btn{
+      cursor:pointer;font-weight:900;letter-spacing:.05em;color:#fff;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(6, 12, 24, 0.80);
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.22), transparent 25%),
+        linear-gradient(180deg, #224fce 0%, #15378f 100%);
+      box-shadow:0 12px 28px rgba(21,55,143,.38), inset 0 1px 0 rgba(255,255,255,.2);
     }
-
-    .search-head {
-      padding: 18px 20px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: #f7fbff;
-      margin: 0;
-    }
-
-    .section-sub {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .search-body {
-      display: grid;
-      grid-template-columns: minmax(340px, 0.95fr) minmax(340px, 1.05fr);
-      gap: 0;
-    }
-
-    .search-form-wrap {
-      padding: 20px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .search-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .search-input-wrap {
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      height: 58px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.12);
+    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.2)}
+    .btn.secondary{
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
-        rgba(5,10,20,0.9);
-      color: #f8fbff;
-      padding: 0 56px 0 18px;
-      font-size: 16px;
-      outline: none;
-      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
+        rgba(9,16,31,.96);
+      color:#edf3ff;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .search-tips{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{
+      display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);font-size:12px;color:var(--muted);
     }
 
-    .search-input::placeholder {
-      color: #72839d;
-    }
-
-    .search-input:focus {
-      border-color: rgba(102, 153, 255, 0.5);
-      box-shadow:
-        0 0 0 4px rgba(79, 128, 255, 0.14),
-        0 16px 35px rgba(0,0,0,0.26);
-      transform: translateY(-1px);
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 18px;
-      color: #8ca0c2;
-      pointer-events: none;
-    }
-
-    .search-help {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      color: var(--muted-2);
-      font-size: 12px;
-    }
-
-    .search-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
-      color: var(--muted);
-    }
-
-    .search-result-wrap {
-      padding: 20px;
-      min-height: 260px;
-      display: flex;
-      align-items: stretch;
-    }
-
-    .search-empty,
-    .search-loading,
-    .search-error {
-      width: 100%;
-      border-radius: 20px;
-      border: 1px dashed rgba(255,255,255,0.13);
-      background: rgba(255,255,255,0.02);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 24px;
-      line-height: 1.8;
-    }
-
-    .search-error {
-      color: #ffb3b3;
-      border-color: rgba(255, 122, 122, 0.28);
-      background: rgba(70, 16, 16, 0.18);
-    }
-
-    .player-card {
-      width: 100%;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.11);
+    .search-card{
+      min-height:250px;border-radius:22px;border:1px solid rgba(255,255,255,.11);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-        rgba(5,10,20,0.86);
-      box-shadow:
-        0 20px 50px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-      position: relative;
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)),
+        rgba(5,10,20,.88);
+      box-shadow:0 18px 40px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+      position:relative;overflow:hidden;
     }
-
-    .player-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 4px;
-      background: linear-gradient(180deg, #f1cb5d, #4c89ff);
-      opacity: 0.95;
+    .search-card::before{
+      content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+      background:linear-gradient(180deg, #f1c95a, #5a84ff);
     }
-
-    .player-top {
-      padding: 20px 22px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .search-empty,.search-loading,.search-error{
+      min-height:250px;display:grid;place-items:center;text-align:center;padding:22px;color:var(--muted);line-height:1.8;
+    }
+    .search-error{color:var(--danger)}
+    .player-top{
+      padding:18px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08);
       background:
-        radial-gradient(circle at 85% 15%, rgba(241,203,93,0.12), transparent 18%),
-        radial-gradient(circle at 15% 20%, rgba(76,137,255,0.12), transparent 18%);
+        radial-gradient(circle at 84% 14%, rgba(241,201,90,.12), transparent 18%),
+        radial-gradient(circle at 14% 20%, rgba(90,132,255,.12), transparent 18%);
     }
-
-    .player-meta {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
+    .player-meta{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;
     }
-
-    .player-identity {
-      min-width: 0;
+    .player-name{margin:0 0 8px;font-size:28px;line-height:1.12;font-weight:950;word-break:break-word}
+    .player-id{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .rank-badge{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+        rgba(9,16,31,.95);
+      font-size:13px;font-weight:900;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+      white-space:nowrap;
     }
-
-    .player-name {
-      font-size: 28px;
-      line-height: 1.12;
-      font-weight: 900;
-      color: #f8fbff;
-      margin: 0 0 8px;
-      word-break: break-word;
+    .player-highlights{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;
     }
-
-    .player-id {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .player-rank-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
+    .highlight{
+      border-radius:16px;padding:14px;border:1px solid rgba(255,255,255,.09);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        rgba(9,16,31,0.95);
-      font-size: 13px;
-      font-weight: 800;
-      color: #f8fbff;
-      white-space: nowrap;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)),
+        rgba(8,14,28,.84);
+    }
+    .highlight .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .highlight .v{font-size:28px;line-height:1;font-weight:950;margin-bottom:8px}
+    .highlight .s{font-size:11px;color:var(--muted2);line-height:1.5}
+    .player-foot{padding:14px 20px 18px;color:var(--muted);font-size:12px;line-height:1.8}
+    .search-actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 20px 18px}
+    .mini-btn{
+      appearance:none;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#edf3ff;
+      border-radius:12px;padding:10px 14px;font:inherit;font-weight:800;cursor:pointer;
     }
 
-    .player-highlights {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+    .board-switch{
+      display:none;
+      gap:10px;
+      margin:0 0 14px;
     }
-
-    .highlight-card {
-      border-radius: 16px;
-      padding: 14px 14px 12px;
-      border: 1px solid rgba(255,255,255,0.09);
+    .switch-btn{
+      flex:1;height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.12);cursor:pointer;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(8,14,28,0.8);
-      min-height: 92px;
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        rgba(8,13,24,.84);
+      color:#cdd9ef;font:inherit;font-weight:900;letter-spacing:.04em;
     }
-
-    .highlight-card .label {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .highlight-card .value {
-      font-size: 28px;
-      line-height: 1;
-      font-weight: 900;
-      color: #f9fbff;
-      margin-bottom: 8px;
-    }
-
-    .highlight-card .note {
-      color: var(--muted-2);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .player-foot {
-      padding: 14px 22px 18px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .boards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .board {
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 28px;
-      overflow: hidden;
+    .switch-btn.active{
+      border-color:rgba(241,201,90,.3);
+      color:#fff;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(5, 10, 20, 0.84);
-      box-shadow: var(--shadow-xl);
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.18), transparent 24%),
+        linear-gradient(180deg, #233f9f, #162a6e);
+      box-shadow:0 10px 22px rgba(22,42,110,.32), inset 0 1px 0 rgba(255,255,255,.2);
     }
 
-    .board-head {
-      position: relative;
-      overflow: hidden;
-      padding: 22px 22px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .boards{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;
+    }
+    .board{
+      border-radius:28px;overflow:hidden;position:relative;
+    }
+    .board.weekly{
+      border:1px solid rgba(120,153,255,.16);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
-        rgba(6, 11, 22, 0.82);
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012)),
+        rgba(5,10,20,.86);
+      box-shadow:var(--shadowXL);
     }
-
-    .board-head::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(100,145,255,0.85), rgba(255,255,255,0));
-      opacity: 0.75;
-    }
-
-    .board-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .board-title-wrap {
-      min-width: 0;
-    }
-
-    .board-title {
-      margin: 0;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: #f8fbff;
-    }
-
-    .board-sub {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .board-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      color: #dfe9fb;
-      font-size: 12px;
-      white-space: nowrap;
-    }
-
-    .board-badge strong {
-      color: #fff;
-    }
-
-    .top3 {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .podium {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.10);
+    .board.total{
+      border:1px solid rgba(241,201,90,.24);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(8,14,28,0.88);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.06),
-        0 16px 36px rgba(0,0,0,0.25);
+        linear-gradient(180deg, rgba(255,244,182,.03), rgba(255,255,255,.012)),
+        rgba(8,9,15,.92);
+      box-shadow:0 28px 90px rgba(0,0,0,.54),0 0 0 1px rgba(241,201,90,.05),0 0 60px rgba(241,201,90,.06);
     }
-
-    .podium::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 4px;
-      opacity: 0.95;
+    .board-head{
+      position:relative;overflow:hidden;padding:18px 18px 16px;border-bottom:1px solid rgba(255,255,255,.08);
     }
-
-    .podium::after {
-      content: "";
-      position: absolute;
-      inset: auto -40px -60px auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(14px);
-      opacity: 0.25;
-    }
-
-    .podium.rank1 {
-      padding: 22px 20px 20px;
-      border-color: rgba(241,203,93,0.36);
+    .board.weekly .board-head{
       background:
-        linear-gradient(180deg, rgba(255,244,191,0.08), rgba(255,255,255,0.02)),
-        linear-gradient(145deg, rgba(40,26,3,0.86), rgba(12,16,28,0.95));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        0 22px 55px rgba(0,0,0,0.34),
-        0 0 0 1px rgba(241,203,93,0.10);
+        radial-gradient(circle at 84% 8%, rgba(90,132,255,.18), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+        rgba(5,10,20,.76);
     }
-
-    .podium.rank1::before {
-      background: linear-gradient(180deg, #fff3be, #efc857, #b7821f);
-    }
-
-    .podium.rank1::after {
-      background: radial-gradient(circle, rgba(241,203,93,0.95), transparent 65%);
-    }
-
-    .podium.rank2 {
-      border-color: rgba(199,210,226,0.26);
+    .board.total .board-head{
       background:
-        linear-gradient(180deg, rgba(248,251,255,0.06), rgba(255,255,255,0.015)),
-        linear-gradient(145deg, rgba(18,24,39,0.92), rgba(8,12,22,0.95));
+        radial-gradient(circle at 84% 8%, rgba(241,201,90,.22), transparent 20%),
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.08), transparent 18%),
+        linear-gradient(180deg, rgba(255,244,182,.04), rgba(255,255,255,0)),
+        rgba(12,9,3,.34);
+    }
+    .board.weekly .board-head::after,
+    .board.total .board-head::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:2px;opacity:.86;
+    }
+    .board.weekly .board-head::after{background:linear-gradient(90deg, transparent, rgba(90,132,255,.92), transparent)}
+    .board.total .board-head::after{background:linear-gradient(90deg, transparent, rgba(241,201,90,.96), transparent)}
+    .board-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+    .board-title{margin:0;font-size:28px;font-weight:950;letter-spacing:.04em}
+    .board-sub{margin-top:6px;color:var(--muted);font-size:13px}
+    .board.total .board-title{
+      background:linear-gradient(180deg,#fff8df 0%,#f1c95a 62%,#b57a15 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .board-badge{
+      display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.11);font-size:12px;
+      background:rgba(255,255,255,.03);color:#e1ebfb;white-space:nowrap;
+    }
+    .board.total .board-badge{
+      background:linear-gradient(180deg, rgba(255,244,182,.08), rgba(255,255,255,.025)), rgba(24,17,4,.65);
+      border-color:rgba(241,201,90,.18);
+      color:#fff4c0;
     }
 
-    .podium.rank2::before {
-      background: linear-gradient(180deg, #fbfdff, #c9d3e3, #8597af);
+    .hero-podium{
+      display:grid;grid-template-columns:1.06fr .98fr .98fr;gap:10px;
     }
-
-    .podium.rank2::after {
-      background: radial-gradient(circle, rgba(199,210,226,0.9), transparent 65%);
-    }
-
-    .podium.rank3 {
-      border-color: rgba(203,142,82,0.28);
+    .podium{
+      position:relative;overflow:hidden;border-radius:24px;padding:18px 16px 16px;border:1px solid rgba(255,255,255,.1);
       background:
-        linear-gradient(180deg, rgba(255,212,178,0.06), rgba(255,255,255,0.015)),
-        linear-gradient(145deg, rgba(27,18,14,0.92), rgba(8,12,22,0.95));
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)),
+        rgba(7,13,26,.9);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px rgba(0,0,0,.25);
+      min-height:216px;
     }
-
-    .podium.rank3::before {
-      background: linear-gradient(180deg, #ffd4b2, #cb8e52, #885223);
-    }
-
-    .podium.rank3::after {
-      background: radial-gradient(circle, rgba(203,142,82,0.95), transparent 65%);
-    }
-
-    .podium-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .podium-place {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: fit-content;
-    }
-
-    .podium-place .num {
-      font-size: 38px;
-      line-height: 0.88;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-
-    .podium.rank1 .podium-place .num {
-      color: #fff1b8;
-      text-shadow: 0 0 18px rgba(241,203,93,0.30);
-    }
-
-    .podium.rank2 .podium-place .num {
-      color: #eef5ff;
-    }
-
-    .podium.rank3 .podium-place .num {
-      color: #ffd4b2;
-    }
-
-    .podium-place .txt {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .podium-score {
-      text-align: right;
-    }
-
-    .podium-score .value {
-      font-size: 34px;
-      line-height: 0.95;
-      font-weight: 900;
-      color: #f9fbff;
-    }
-
-    .podium-score .unit {
-      margin-top: 5px;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .podium-name {
-      font-size: 24px;
-      line-height: 1.15;
-      font-weight: 900;
-      color: #ffffff;
-      margin: 0 0 8px;
-      word-break: break-word;
-    }
-
-    .podium-id {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .podium-foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .podium-caption {
-      color: #d3deef;
-      font-size: 12px;
-      line-height: 1.7;
-      max-width: 72%;
-    }
-
-    .podium-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.11);
-      background: rgba(255,255,255,0.04);
-      font-size: 12px;
-      color: #f8fbff;
-      white-space: nowrap;
-    }
-
-    .board-body {
-      padding: 18px 18px 20px;
-    }
-
-    .list-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 12px;
-      flex-wrap: wrap;
-    }
-
-    .list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .row {
-      position: relative;
-      display: grid;
-      grid-template-columns: 84px minmax(0, 1fr) 96px;
-      gap: 12px;
-      align-items: center;
-      padding: 14px 16px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
+    .podium::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+    .podium::after{content:"";position:absolute;right:-40px;bottom:-60px;width:170px;height:170px;border-radius:50%;filter:blur(14px);opacity:.26}
+    .podium.rank1{padding:22px 18px 18px;transform:translateY(-3px)}
+    .board.weekly .podium.rank1{
+      border-color:rgba(241,201,90,.32);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012)),
-        rgba(9, 15, 28, 0.72);
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        background var(--transition),
-        box-shadow var(--transition);
-      overflow: hidden;
+        linear-gradient(180deg, rgba(241,201,90,.09), rgba(255,255,255,.016)),
+        linear-gradient(145deg, rgba(12,18,36,.95), rgba(7,11,19,.95));
+      box-shadow:0 0 0 1px rgba(241,201,90,.08),0 18px 46px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.12);
     }
-
-    .row:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,0.14);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
-    }
-
-    .row.highlighted {
-      border-color: rgba(241,203,93,0.36);
+    .board.total .podium.rank1{
+      border-color:rgba(241,201,90,.45);
       background:
-        linear-gradient(180deg, rgba(255,244,191,0.08), rgba(255,255,255,0.012)),
-        rgba(16, 18, 24, 0.92);
-      box-shadow:
-        0 0 0 1px rgba(241,203,93,0.09),
-        0 16px 38px rgba(0,0,0,0.28);
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,.14), transparent 20%),
+        linear-gradient(180deg, rgba(255,244,182,.14), rgba(255,255,255,.018)),
+        linear-gradient(145deg, rgba(43,27,2,.96), rgba(9,8,11,.98));
+      box-shadow:0 0 0 1px rgba(241,201,90,.12),0 0 38px rgba(241,201,90,.18),0 22px 56px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.16);
     }
-
-    .row.highlighted::after {
-      content: "YOU";
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #f6d56f;
-      font-weight: 900;
-      opacity: 0.95;
-    }
-
-    .rank-pill {
-      justify-self: stretch;
-      display: grid;
-      place-items: center;
-      min-height: 58px;
-      border-radius: 16px;
-      font-weight: 900;
-      font-size: 20px;
-      letter-spacing: -0.02em;
-      color: #f8fbff;
-      border: 1px solid rgba(255,255,255,0.08);
+    .podium.rank1::before{background:linear-gradient(180deg,var(--gold1),var(--gold2),var(--gold3))}
+    .podium.rank1::after{background:radial-gradient(circle, rgba(241,201,90,.96), transparent 65%)}
+    .podium.rank2{
+      border-color:rgba(203,215,234,.28);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-        rgba(255,255,255,0.03);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        linear-gradient(180deg, rgba(251,253,255,.06), rgba(255,255,255,.015)),
+        linear-gradient(145deg, rgba(18,24,39,.92), rgba(8,12,22,.96));
     }
-
-    .rank-pill.gold {
-      color: #1d1402;
-      border-color: rgba(241,203,93,0.28);
-      background: linear-gradient(180deg, #fff3be 0%, #f0c857 62%, #b7821f 100%);
-      box-shadow:
-        0 0 20px rgba(241,203,93,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.35);
-    }
-
-    .rank-pill.silver {
-      color: #0f1723;
-      border-color: rgba(199,210,226,0.24);
-      background: linear-gradient(180deg, #f8fbff 0%, #c9d3e3 65%, #8597af 100%);
-    }
-
-    .rank-pill.bronze {
-      color: #1a120c;
-      border-color: rgba(203,142,82,0.26);
-      background: linear-gradient(180deg, #ffd4b2 0%, #cb8e52 62%, #885223 100%);
-    }
-
-    .rank-pill.normal {
-      color: #dce8fb;
+    .podium.rank2::before{background:linear-gradient(180deg,var(--silver1),var(--silver2),var(--silver3))}
+    .podium.rank2::after{background:radial-gradient(circle, rgba(203,215,234,.94), transparent 65%)}
+    .podium.rank3{
+      border-color:rgba(203,139,73,.28);
       background:
-        linear-gradient(180deg, rgba(91,120,180,0.20), rgba(126,92,177,0.15)),
-        rgba(255,255,255,0.03);
+        linear-gradient(180deg, rgba(255,212,175,.06), rgba(255,255,255,.015)),
+        linear-gradient(145deg, rgba(27,18,14,.92), rgba(8,12,22,.96));
+    }
+    .podium.rank3::before{background:linear-gradient(180deg,var(--bronze1),var(--bronze2),var(--bronze3))}
+    .podium.rank3::after{background:radial-gradient(circle, rgba(203,139,73,.96), transparent 65%)}
+    .podium-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .place .num{font-size:40px;line-height:.88;font-weight:950;letter-spacing:-.03em}
+    .rank1 .place .num{color:#fff1b3;text-shadow:0 0 18px rgba(241,201,90,.3)}
+    .rank2 .place .num{color:#f0f5ff}
+    .rank3 .place .num{color:#ffd6b5}
+    .place .txt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+    .podium-score{text-align:right}
+    .podium-score .value{font-size:34px;line-height:.95;font-weight:950}
+    .board.total .podium-score .value{text-shadow:0 0 20px rgba(241,201,90,.18)}
+    .podium-score .unit{margin-top:5px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .podium-name{margin:0 0 8px;font-size:23px;line-height:1.14;font-weight:950;word-break:break-word}
+    .podium-id{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .podium-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .podium-note{font-size:12px;line-height:1.7;color:#d5e0f2;max-width:72%}
+    .board.total .podium-note{color:#f0e6c3}
+    .podium-chip{
+      display:inline-flex;align-items:center;gap:8px;padding:9px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.11);
+      background:rgba(255,255,255,.04);font-size:12px;font-weight:800;white-space:nowrap;
+    }
+    .board.total .podium-chip{
+      border-color:rgba(241,201,90,.18);
+      background:linear-gradient(180deg, rgba(255,244,182,.08), rgba(255,255,255,.02)), rgba(28,20,6,.6);
+      color:#fff4c0;
     }
 
-    .member {
-      min-width: 0;
+    .board-body{padding:16px 16px 18px}
+    .list-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px;
+      font-size:12px;color:var(--muted);
     }
-
-    .member .name {
-      font-weight: 800;
-      font-size: 16px;
-      color: #f8fbff;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-bottom: 4px;
-    }
-
-    .member .id {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .score {
-      text-align: right;
-    }
-
-    .score .value {
-      font-size: 24px;
-      line-height: 0.95;
-      font-weight: 900;
-      color: #f8fbff;
-    }
-
-    .score .unit {
-      margin-top: 5px;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .loading,
-    .empty,
-    .error-box {
-      padding: 22px 16px;
-      text-align: center;
-      border-radius: 18px;
-      border: 1px dashed rgba(255,255,255,0.12);
-      color: var(--muted);
-      background: rgba(255,255,255,0.02);
-      line-height: 1.8;
-    }
-
-    .error-box {
-      border-color: rgba(255, 122, 122, 0.26);
-      color: #ffc1c1;
-      background: rgba(70, 16, 16, 0.14);
-    }
-
-    .retry-button {
-      margin-top: 10px;
-      appearance: none;
-      border: 1px solid rgba(255,255,255,0.12);
+    .rows{display:grid;gap:10px}
+    .row{
+      position:relative;display:grid;grid-template-columns:92px minmax(0,1fr) 110px;gap:12px;align-items:center;
+      padding:14px 16px;border-radius:18px;border:1px solid rgba(255,255,255,.08);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)),
-        rgba(9,16,31,0.95);
-      color: #f8fbff;
-      border-radius: 12px;
-      padding: 10px 14px;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform var(--transition), border-color var(--transition);
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.012)),
+        rgba(9,15,28,.74);
+      transition:transform var(--t),border-color var(--t),box-shadow var(--t),background var(--t);
+      overflow:hidden;
+    }
+    .board.total .row{
+      background:
+        linear-gradient(180deg, rgba(255,244,182,.03), rgba(255,255,255,.012)),
+        rgba(14,11,7,.72);
+      border-color:rgba(241,201,90,.08);
+    }
+    .row:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,.16);
+      box-shadow:0 12px 28px rgba(0,0,0,.24);
+    }
+    .row.is-focus{
+      border-color:rgba(241,201,90,.38);
+      background:
+        linear-gradient(180deg, rgba(255,244,182,.09), rgba(255,255,255,.016)),
+        rgba(18,18,21,.94);
+      box-shadow:0 0 0 1px rgba(241,201,90,.09),0 18px 38px rgba(0,0,0,.3);
+    }
+    .row.is-focus::after{
+      content:"YOU";position:absolute;right:12px;top:10px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#f6d56f;font-weight:950;
+    }
+    .rank-pill{
+      min-height:60px;border-radius:16px;display:grid;place-items:center;font-size:20px;font-weight:950;letter-spacing:-.02em;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
+        rgba(255,255,255,.03);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .rank-pill.gold{
+      color:#241500;border-color:rgba(241,201,90,.28);
+      background:linear-gradient(180deg,var(--gold1) 0%, var(--gold2) 62%, var(--gold3) 100%);
+      box-shadow:0 0 22px rgba(241,201,90,.24), inset 0 1px 0 rgba(255,255,255,.36);
+    }
+    .rank-pill.silver{
+      color:#101621;border-color:rgba(203,215,234,.25);
+      background:linear-gradient(180deg,var(--silver1) 0%, var(--silver2) 64%, var(--silver3) 100%);
+    }
+    .rank-pill.bronze{
+      color:#201108;border-color:rgba(203,139,73,.26);
+      background:linear-gradient(180deg,var(--bronze1) 0%, var(--bronze2) 64%, var(--bronze3) 100%);
+    }
+    .rank-pill.normal{
+      color:#dce8fb;
+      background:
+        linear-gradient(180deg, rgba(91,120,180,.22), rgba(126,92,177,.14)),
+        rgba(255,255,255,.03);
+    }
+    .board.total .rank-pill.normal{
+      color:#fff1bf;
+      background:
+        linear-gradient(180deg, rgba(241,201,90,.20), rgba(154,111,25,.14)),
+        rgba(255,255,255,.03);
+      border-color:rgba(241,201,90,.11);
+    }
+    .member .name{font-size:16px;font-weight:900;color:#f8fbff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+    .member .id{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .score{text-align:right}
+    .score .value{font-size:24px;line-height:.95;font-weight:950}
+    .board.total .score .value{color:#ffeab1;text-shadow:0 0 16px rgba(241,201,90,.12)}
+    .score .unit{margin-top:5px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+    .loading,.empty,.error-box{
+      padding:22px 16px;text-align:center;border-radius:18px;border:1px dashed rgba(255,255,255,.12);color:var(--muted);
+      background:rgba(255,255,255,.02);line-height:1.8;
+    }
+    .error-box{border-color:rgba(255,125,125,.26);color:#ffc1c1;background:rgba(70,16,16,.14)}
+    .retry-button{
+      margin-top:10px;appearance:none;border:1px solid rgba(255,255,255,.12);background:
+      linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02)),
+      rgba(9,16,31,.95);
+      color:#f8fbff;border-radius:12px;padding:10px 14px;font:inherit;font-weight:800;cursor:pointer;
     }
 
-    .retry-button:hover {
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,0.2);
+    .footer{
+      margin-top:14px;padding:16px 18px;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);color:var(--muted2);font-size:12px;
+    }
+    .footer strong{color:#dbe7fb}
+    .mono{
+      font-family:ui-monospace,"SFMono-Regular","Cascadia Code","Consolas","Liberation Mono",monospace;
+    }
+    .sr-only{
+      position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
 
-    .footer {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
-      color: var(--muted-2);
-      font-size: 12px;
+    @media (max-width: 1180px){
+      .hero-grid{grid-template-columns:1fr}
+      .search-grid{grid-template-columns:1fr}
+      .boards{grid-template-columns:1fr}
     }
 
-    .footer strong {
-      color: #dbe7fb;
-      font-weight: 800;
+    @media (max-width: 900px){
+      .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .player-highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-podium{grid-template-columns:1fr}
+      .podium{min-height:auto}
+      .podium-note{max-width:100%}
+      .podium-top{margin-bottom:12px}
     }
 
-    .mono {
-      font-family:
-        ui-monospace,
-        "SFMono-Regular",
-        "Cascadia Code",
-        "Consolas",
-        "Liberation Mono",
-        monospace;
+    @media (max-width: 720px){
+      .wrap{padding:12px 10px 32px}
+      .topbar{padding:12px 14px}
+      .hero{padding:18px 14px 14px;border-radius:24px}
+      .hero h1{letter-spacing:.03em}
+      .hero p{font-size:14px;line-height:1.68}
+      .search-panel{padding:14px;border-radius:22px}
+      .search-row{grid-template-columns:1fr}
+      .btn,.input,.select{height:54px}
+      .board-switch{display:flex}
+      .boards{display:block}
+      .board{display:none;margin-bottom:12px}
+      .board.active{display:block}
+      .board-head,.board-body{padding-left:14px;padding-right:14px}
+      .board,.search-panel{border-radius:22px}
+      .row{grid-template-columns:78px minmax(0,1fr) 82px;gap:10px;padding:13px 12px}
+      .rank-pill{min-height:56px;font-size:18px}
+      .member .name{font-size:15px}
+      .score .value{font-size:21px}
+      .player-name{font-size:24px}
+      .highlight .v{font-size:24px}
+      .count-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .count-main .big{font-size:32px}
     }
 
-    .sr-only {
-      position: absolute !important;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    @media (max-width: 1140px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .boards {
-        grid-template-columns: 1fr;
-      }
-
-      .search-body {
-        grid-template-columns: 1fr;
-      }
-
-      .search-form-wrap {
-        border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-    }
-
-    @media (max-width: 840px) {
-      .hero-stats,
-      .player-highlights {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .countdown-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .board-title {
-        font-size: 24px;
-      }
-
-      .player-name {
-        font-size: 24px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        padding: 14px 12px 48px;
-      }
-
-      .topbar {
-        padding: 12px 14px;
-      }
-
-      .hero {
-        padding: 24px 16px 18px;
-        border-radius: 24px;
-      }
-
-      .hero h1 {
-        letter-spacing: 0.04em;
-      }
-
-      .hero p {
-        font-size: 14px;
-        line-height: 1.7;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .search-head,
-      .search-form-wrap,
-      .search-result-wrap,
-      .board-head,
-      .board-body {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .board,
-      .search-panel {
-        border-radius: 22px;
-      }
-
-      .podium,
-      .player-card {
-        border-radius: 20px;
-      }
-
-      .row {
-        grid-template-columns: 74px minmax(0, 1fr) 76px;
-        gap: 10px;
-        padding: 13px 12px;
-      }
-
-      .rank-pill {
-        min-height: 54px;
-        font-size: 18px;
-      }
-
-      .member .name {
-        font-size: 15px;
-      }
-
-      .score .value {
-        font-size: 21px;
-      }
-
-      .podium-place .num,
-      .podium-score .value {
-        font-size: 30px;
-      }
-
-      .podium-name {
-        font-size: 21px;
-      }
-
-      .player-highlights {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .countdown-main .big {
-        font-size: 32px;
-      }
-
-      .footer {
-        padding: 14px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .player-highlights,
-      .countdown-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .highlight-card,
-      .count-chip {
-        min-height: auto;
-      }
-
-      .row {
-        grid-template-columns: 68px minmax(0, 1fr) 68px;
-      }
-
-      .rank-pill {
-        font-size: 17px;
-      }
-
-      .score .value {
-        font-size: 19px;
-      }
+    @media (max-width: 460px){
+      .brand-title{font-size:15px}
+      .trust{gap:8px}
+      .chip{padding:8px 10px;font-size:11px}
+      .hero-stats,.player-highlights{grid-template-columns:1fr}
+      .row{grid-template-columns:66px minmax(0,1fr) 68px}
+      .rank-pill{font-size:17px}
+      .score .value{font-size:19px}
+      .podium-score .value,.place .num{font-size:30px}
+      .podium-name{font-size:20px}
+      .board-title{font-size:24px}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="topbar">
+    <header class="topbar glass">
       <div class="brand">
-        <div class="brand-badge" aria-hidden="true">CCL</div>
-        <div class="brand-text">
+        <div class="brand-mark">CCL</div>
+        <div class="brand-copy">
           <div class="eyebrow">Official Ranking Site</div>
-          <div class="title">Calligraphy Championship League</div>
+          <div class="brand-title">Calligraphy Championship League</div>
         </div>
       </div>
-      <div class="trust-strip">
-        <div class="trust-chip">
-          <span class="trust-dot" aria-hidden="true"></span>
-          <span>公開データ連携中</span>
-        </div>
-        <div class="trust-chip">
-          <span>最終更新 <strong id="lastUpdatedText">取得中...</strong></span>
-        </div>
+      <div class="trust">
+        <div class="chip"><span class="dot"></span><span>公開データ連携中</span></div>
+        <div class="chip">最終更新 <strong id="lastUpdatedText">取得中...</strong></div>
       </div>
     </header>
 
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
+      <div class="hero-grid">
+        <div class="hero-main">
           <div class="hero-label">CCL Official Ranking</div>
-          <h1>
-            頂点を目指す熱量が、
-            <span class="accent">ここに並ぶ。</span>
-          </h1>
+          <h1>頂点を目指す熱量が、<span class="accent">順位になる。</span></h1>
           <p>
-            週間ランキングは今この瞬間の勝負。総合ランキングは積み上げの証明。
-            CCLメンバーが自分の現在地を確認し、次の一手を決めるための公式ランキングサイトです。
+            週間ランキングは“今週の爆発力”。総合ランキングは“積み上げた証明”。
+            CCLメンバーが自分の現在地を確認し、次に勝ちにいくための公式ランキングサイトです。
           </p>
 
           <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="label">Weekly Ranking</div>
-              <div class="value" id="heroWeeklyCount">--</div>
-              <div class="sub">10位以内に入っている人数</div>
+            <div class="stat">
+              <div class="k">Weekly Top10</div>
+              <div class="v" id="heroWeeklyCount">--</div>
+              <div class="s">10位以内に入っている人数</div>
             </div>
-            <div class="hero-stat">
-              <div class="label">Total Ranking</div>
-              <div class="value" id="heroTotalCount">--</div>
-              <div class="sub">10位以内に入っている人数</div>
+            <div class="stat">
+              <div class="k">Total Top10</div>
+              <div class="v" id="heroTotalCount">--</div>
+              <div class="s">10位以内に入っている人数</div>
             </div>
-            <div class="hero-stat">
-              <div class="label">Status</div>
-              <div class="value" id="heroStatusText">LIVE</div>
-              <div class="sub">Google Sheets 公開CSVと同期</div>
+            <div class="stat">
+              <div class="k">Search Mode</div>
+              <div class="v" id="heroSearchMode">BTN</div>
+              <div class="s">検索ボタンでのみ移動</div>
+            </div>
+            <div class="stat">
+              <div class="k">Status</div>
+              <div class="v" id="heroStatusText">LIVE</div>
+              <div class="s">Google Sheets CSV と同期</div>
             </div>
           </div>
         </div>
 
         <div class="hero-side">
-          <div class="signal-card">
+          <div class="signal">
             <div class="signal-title">Weekly Battle Window</div>
-            <div class="countdown-main">
+            <div class="count-main">
               <div class="big" id="nextResetMain">--:--:--</div>
               <div class="unit">次の週切り替わりまで</div>
             </div>
-            <div class="countdown-grid">
-              <div class="count-chip">
-                <span class="num" id="daysValue">--</span>
-                <span class="txt">Days</span>
-              </div>
-              <div class="count-chip">
-                <span class="num" id="hoursValue">--</span>
-                <span class="txt">Hours</span>
-              </div>
-              <div class="count-chip">
-                <span class="num" id="minutesValue">--</span>
-                <span class="txt">Minutes</span>
-              </div>
-              <div class="count-chip">
-                <span class="num" id="secondsValue">--</span>
-                <span class="txt">Seconds</span>
-              </div>
+            <div class="count-grid">
+              <div class="count-chip"><span class="num" id="daysValue">--</span><span class="txt">Days</span></div>
+              <div class="count-chip"><span class="num" id="hoursValue">--</span><span class="txt">Hours</span></div>
+              <div class="count-chip"><span class="num" id="minutesValue">--</span><span class="txt">Minutes</span></div>
+              <div class="count-chip"><span class="num" id="secondsValue">--</span><span class="txt">Seconds</span></div>
             </div>
-            <div class="signal-foot" id="resetDetailText">
-              週間ランキングは日曜切り替え。今週の一手が、そのまま今週の順位になります。
-            </div>
+            <p id="resetDetailText">週間ランキングは日曜切り替え。今週の一手が、そのまま今週の順位になります。</p>
           </div>
 
-          <div class="signal-card">
+          <div class="signal">
             <div class="signal-title">Ranking Signal</div>
-            <div class="signal-foot">
-              総合は積み上げ、週間は瞬間火力。
-              どちらも順位として可視化されるからこそ、動いた人が目立つ構造です。
-            </div>
+            <p>
+              TOP10入り自体が価値。特に総合TOP3は、CCL内で明確に格が違うポジションです。
+              週間は瞬間の爆発力、総合は継続の証明として演出を分けています。
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="search-section">
-      <div class="search-panel">
-        <div class="search-head">
-          <div>
-            <h2 class="section-title">自分の順位を検索</h2>
-            <div class="section-sub">
-              member_id または Discord名で検索できます。見つけた瞬間に、自分の現在地が一目で分かります。
+    <section class="search-panel glass">
+      <h2 class="section-title">自分の順位を検索</h2>
+      <div class="section-sub">
+        member_id または Discord名で検索できます。文字を打っただけでは移動しません。検索ボタンを押した時だけ、該当箇所へハイライト表示します。
+      </div>
+
+      <div class="search-grid">
+        <div>
+          <form class="search-form" id="searchForm" autocomplete="off">
+            <div class="search-row">
+              <div class="field">
+                <label class="sr-only" for="searchInput">member_id または Discord名</label>
+                <input id="searchInput" class="input" type="text" placeholder="member_id または Discord名を入力" inputmode="search" enterkeyhint="search" />
+                <div class="search-icon">⌕</div>
+              </div>
+
+              <div class="field">
+                <label class="sr-only" for="searchType">検索対象</label>
+                <select id="searchType" class="select">
+                  <option value="all">両方</option>
+                  <option value="member_id">ID優先</option>
+                  <option value="discord_name">名前優先</option>
+                </select>
+              </div>
+
+              <button class="btn" type="submit">検索</button>
             </div>
-          </div>
+
+            <div class="search-tips">
+              <div class="tag">例: M0001</div>
+              <div class="tag">例: でぐち</div>
+              <div class="tag">部分一致OK</div>
+              <button id="clearSearchBtn" class="btn secondary" type="button">クリア</button>
+            </div>
+          </form>
         </div>
 
-        <div class="search-body">
-          <div class="search-form-wrap">
-            <form class="search-form" id="searchForm" autocomplete="off">
-              <label class="sr-only" for="searchInput">member_id または Discord名で検索</label>
-              <div class="search-input-wrap">
-                <input
-                  id="searchInput"
-                  class="search-input"
-                  type="text"
-                  placeholder="member_id または Discord名を入力"
-                  inputmode="search"
-                  enterkeyhint="search"
-                />
-                <div class="search-icon" aria-hidden="true">⌕</div>
-              </div>
-              <div class="search-help">
-                <div class="search-tag">例: M0001</div>
-                <div class="search-tag">例: でぐち</div>
-                <div class="search-tag">部分一致OK</div>
-              </div>
-            </form>
-          </div>
-
-          <div class="search-result-wrap">
-            <div id="searchResult" class="search-empty">
-              ランキングデータ読み込み後に検索できます。<br />
-              自分の順位・ポイント・ランクをここに表示します。
-            </div>
+        <div id="searchResult" class="search-card">
+          <div class="search-empty">
+            member_id または Discord名を入力して検索してください。<br />
+            一致したメンバーの週間順位・総合順位・ポイント・ランクを表示します。
           </div>
         </div>
       </div>
     </section>
+
+    <div class="board-switch" id="boardSwitch">
+      <button class="switch-btn active" type="button" data-board="weekly">週間ランキング</button>
+      <button class="switch-btn" type="button" data-board="total">総合ランキング</button>
+    </div>
 
     <main class="boards">
-      <section class="board">
+      <section id="weeklyBoard" class="board weekly active">
         <div class="board-head">
           <div class="board-meta">
-            <div class="board-title-wrap">
+            <div>
               <h2 class="board-title">週間ランキング</h2>
               <div class="board-sub">今週の活動ポイント順位。今だけの勝負が、そのまま可視化されます。</div>
             </div>
-            <div class="board-badge">
-              週切り替え <strong id="weeklyResetLabel">毎週日曜</strong>
-            </div>
+            <div class="board-badge">週切り替え <strong id="weeklyResetLabel">毎週日曜</strong></div>
           </div>
 
-          <div id="weeklyTop3" class="top3">
+          <div id="weeklyTop3" class="hero-podium">
             <div class="loading">週間ランキングを読み込み中...</div>
           </div>
         </div>
@@ -1530,25 +746,23 @@
             <div>4位以下 / 10位以内表示</div>
             <div id="weeklyListMeta">読み込み中...</div>
           </div>
-          <div id="weeklyList" class="list">
+          <div id="weeklyList" class="rows">
             <div class="loading">読み込み中...</div>
           </div>
         </div>
       </section>
 
-      <section class="board">
+      <section id="totalBoard" class="board total">
         <div class="board-head">
           <div class="board-meta">
-            <div class="board-title-wrap">
+            <div>
               <h2 class="board-title">総合ランキング</h2>
               <div class="board-sub">累計ポイント順位。継続して積み上げた実力が並びます。</div>
             </div>
-            <div class="board-badge">
-              累計記録 <strong id="totalRecordLabel">ALL TIME</strong>
-            </div>
+            <div class="board-badge">累計記録 <strong>ALL TIME</strong></div>
           </div>
 
-          <div id="totalTop3" class="top3">
+          <div id="totalTop3" class="hero-podium">
             <div class="loading">総合ランキングを読み込み中...</div>
           </div>
         </div>
@@ -1558,7 +772,7 @@
             <div>4位以下 / 10位以内表示</div>
             <div id="totalListMeta">読み込み中...</div>
           </div>
-          <div id="totalList" class="list">
+          <div id="totalList" class="rows">
             <div class="loading">読み込み中...</div>
           </div>
         </div>
@@ -1566,7 +780,7 @@
     </main>
 
     <footer class="footer">
-      <div><strong>CCL Official Ranking Site</strong> / Weekly & Total Leaderboard</div>
+      <div><strong>CCL Official Ranking Site</strong> / Weekly &amp; Total Leaderboard</div>
       <div class="mono" id="footerSourceText">Source: Google Sheets CSV</div>
     </footer>
   </div>
@@ -1580,8 +794,8 @@
       playersMap: new Map(),
       loaded: false,
       lastFetchDate: null,
-      highlightedMemberId: "",
-      highlightedName: ""
+      focusMemberId: "",
+      activeBoard: "weekly"
     };
 
     const el = {
@@ -1591,21 +805,27 @@
       totalList: document.getElementById("totalList"),
       weeklyListMeta: document.getElementById("weeklyListMeta"),
       totalListMeta: document.getElementById("totalListMeta"),
-      searchInput: document.getElementById("searchInput"),
-      searchForm: document.getElementById("searchForm"),
-      searchResult: document.getElementById("searchResult"),
       lastUpdatedText: document.getElementById("lastUpdatedText"),
       heroWeeklyCount: document.getElementById("heroWeeklyCount"),
       heroTotalCount: document.getElementById("heroTotalCount"),
       heroStatusText: document.getElementById("heroStatusText"),
-      footerSourceText: document.getElementById("footerSourceText"),
+      heroSearchMode: document.getElementById("heroSearchMode"),
       nextResetMain: document.getElementById("nextResetMain"),
       daysValue: document.getElementById("daysValue"),
       hoursValue: document.getElementById("hoursValue"),
       minutesValue: document.getElementById("minutesValue"),
       secondsValue: document.getElementById("secondsValue"),
       resetDetailText: document.getElementById("resetDetailText"),
-      weeklyResetLabel: document.getElementById("weeklyResetLabel")
+      weeklyResetLabel: document.getElementById("weeklyResetLabel"),
+      footerSourceText: document.getElementById("footerSourceText"),
+      searchForm: document.getElementById("searchForm"),
+      searchInput: document.getElementById("searchInput"),
+      searchType: document.getElementById("searchType"),
+      searchResult: document.getElementById("searchResult"),
+      clearSearchBtn: document.getElementById("clearSearchBtn"),
+      weeklyBoard: document.getElementById("weeklyBoard"),
+      totalBoard: document.getElementById("totalBoard"),
+      boardSwitch: document.getElementById("boardSwitch")
     };
 
     function escapeHtml(str) {
@@ -1618,10 +838,7 @@
     }
 
     function normalizeText(str) {
-      return String(str ?? "")
-        .normalize("NFKC")
-        .trim()
-        .toLowerCase();
+      return String(str ?? "").normalize("NFKC").trim().toLowerCase();
     }
 
     function toNumber(value) {
@@ -1657,7 +874,6 @@
           current += char;
         }
       }
-
       result.push(current);
       return result.map(cell => cell.trim());
     }
@@ -1682,13 +898,11 @@
         } else if ((char === "\n" || char === "\r") && !inQuotes) {
           if (current.trim() !== "") lines.push(current);
           current = "";
-
           if (char === "\r" && next === "\n") i++;
         } else {
           current += char;
         }
       }
-
       if (current.trim() !== "") lines.push(current);
       return lines.map(parseCSVLine);
     }
@@ -1755,9 +969,10 @@
     }
 
     function splitTop3(rows) {
-      const top3 = rows.filter(item => Number(item.rank) <= 3).sort((a, b) => Number(a.rank) - Number(b.rank));
-      const rest = rows.filter(item => Number(item.rank) > 3).sort((a, b) => Number(a.rank) - Number(b.rank));
-      return { top3, rest };
+      return {
+        top3: rows.filter(item => Number(item.rank) <= 3).sort((a, b) => Number(a.rank) - Number(b.rank)),
+        rest: rows.filter(item => Number(item.rank) > 3).sort((a, b) => Number(a.rank) - Number(b.rank))
+      };
     }
 
     function getPodiumCaption(type, rank) {
@@ -1775,7 +990,7 @@
 
     function renderPodiums(target, rows, type) {
       if (!rows.length) {
-        target.innerHTML = `<div class="empty">表示できるデータがありません</div>`;
+        target.innerHTML = '<div class="empty">表示できるデータがありません</div>';
         return;
       }
 
@@ -1783,10 +998,11 @@
         const rank = Number(item.rank);
         const scoreLabel = type === "weekly" ? "WEEKLY SCORE" : "TOTAL SCORE";
         const badge = rank === 1 ? "LEADER" : rank === 2 ? "CHASER" : "TOP TIER";
+
         return `
           <article class="podium rank${rank}">
             <div class="podium-top">
-              <div class="podium-place">
+              <div class="place">
                 <div class="num">${rank}</div>
                 <div class="txt">${rank === 1 ? "Champion Seat" : rank === 2 ? "Second Place" : "Third Place"}</div>
               </div>
@@ -1798,7 +1014,7 @@
             <h3 class="podium-name">${escapeHtml(item.name || "-")}</h3>
             <div class="podium-id">${escapeHtml(item.memberId || "")}</div>
             <div class="podium-foot">
-              <div class="podium-caption">${escapeHtml(getPodiumCaption(type, rank))}</div>
+              <div class="podium-note">${escapeHtml(getPodiumCaption(type, rank))}</div>
               <div class="podium-chip">${badge}${item.rankLabel ? ` / ${escapeHtml(item.rankLabel)}` : ""}</div>
             </div>
           </article>
@@ -1808,17 +1024,14 @@
 
     function renderRows(target, rows, kind) {
       if (!rows.length) {
-        target.innerHTML = `<div class="empty">表示できるデータがありません</div>`;
+        target.innerHTML = '<div class="empty">表示できるデータがありません</div>';
         return;
       }
 
       target.innerHTML = rows.map(item => {
-        const shouldHighlight =
-          state.highlightedMemberId &&
-          normalizeText(item.memberId) === normalizeText(state.highlightedMemberId);
-
+        const focused = state.focusMemberId && normalizeText(item.memberId) === normalizeText(state.focusMemberId);
         return `
-          <div class="row ${shouldHighlight ? "highlighted" : ""}" data-kind="${escapeHtml(kind)}" data-member-id="${escapeHtml(item.memberId || "")}">
+          <div class="row ${focused ? 'is-focus' : ''}" data-kind="${escapeHtml(kind)}" data-member-id="${escapeHtml(item.memberId || "")}">
             <div class="rank-pill ${rankClass(item.rank)}">${escapeHtml(item.rank)}位</div>
             <div class="member">
               <div class="name">${escapeHtml(item.name || "-")}</div>
@@ -1833,305 +1046,64 @@
       }).join("");
     }
 
-    function formatDateTimeJST(date) {
-      return new Intl.DateTimeFormat("ja-JP", {
-        timeZone: "Asia/Tokyo",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false
-      }).format(date);
-    }
-
-    function getJSTNowParts(date = new Date()) {
-      const parts = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Asia/Tokyo",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        weekday: "short",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false
-      }).formatToParts(date);
-
-      const obj = {};
-      parts.forEach(part => {
-        if (part.type !== "literal") obj[part.type] = part.value;
-      });
-      return obj;
-    }
-
-    function getWeekResetCountdown() {
-      const now = new Date();
-      const parts = getJSTNowParts(now);
-
-      const jYear = Number(parts.year);
-      const jMonth = Number(parts.month);
-      const jDay = Number(parts.day);
-      const weekdayShort = parts.weekday;
-      const jHour = Number(parts.hour);
-      const jMinute = Number(parts.minute);
-      const jSecond = Number(parts.second);
-
-      const weekMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
-      const weekday = weekMap[weekdayShort] ?? 0;
-
-      const resetDateUtc = new Date(Date.UTC(jYear, jMonth - 1, jDay, -9, 0, 0));
-      const nextResetUtc = new Date(resetDateUtc);
-
-      const addDays = weekday === 0 && (jHour > 0 || jMinute > 0 || jSecond > 0) ? 7 : (7 - weekday) % 7;
-      nextResetUtc.setUTCDate(nextResetUtc.getUTCDate() + addDays);
-
-      const diff = nextResetUtc.getTime() - now.getTime();
-      const safeDiff = Math.max(0, diff);
-
-      const days = Math.floor(safeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((safeDiff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((safeDiff / (1000 * 60)) % 60);
-      const seconds = Math.floor((safeDiff / 1000) % 60);
-
-      return { days, hours, minutes, seconds, nextResetUtc };
-    }
-
-    function updateCountdown() {
-      const { days, hours, minutes, seconds, nextResetUtc } = getWeekResetCountdown();
-
-      el.daysValue.textContent = String(days);
-      el.hoursValue.textContent = String(hours).padStart(2, "0");
-      el.minutesValue.textContent = String(minutes).padStart(2, "0");
-      el.secondsValue.textContent = String(seconds).padStart(2, "0");
-      el.nextResetMain.textContent = `${String(hours + days * 24).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-      el.weeklyResetLabel.textContent = "日曜 0:00 更新";
-
-      const resetLabel = new Intl.DateTimeFormat("ja-JP", {
-        timeZone: "Asia/Tokyo",
-        month: "numeric",
-        day: "numeric",
-        weekday: "short",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-      }).format(nextResetUtc);
-
-      el.resetDetailText.textContent = `次の週間リセットは ${resetLabel}（JST）です。今週の順位はこのタイミングで切り替わります。`;
-    }
-
-    function findPlayer(query) {
-      const q = normalizeText(query);
-      if (!q) return null;
-
-      const players = Array.from(state.playersMap.values());
-
-      const exact = players.find(player =>
-        normalizeText(player.memberId) === q || normalizeText(player.name) === q
-      );
-      if (exact) return exact;
-
-      const partial = players.filter(player =>
-        player.searchTokens.some(token => token && token.includes(q))
-      );
-
-      if (!partial.length) return null;
-
-      partial.sort((a, b) => {
-        const aScore =
-          (normalizeText(a.memberId).startsWith(q) ? 100 : 0) +
-          (normalizeText(a.name).startsWith(q) ? 90 : 0) +
-          (normalizeText(a.memberId).includes(q) ? 40 : 0) +
-          (normalizeText(a.name).includes(q) ? 30 : 0);
-
-        const bScore =
-          (normalizeText(b.memberId).startsWith(q) ? 100 : 0) +
-          (normalizeText(b.name).startsWith(q) ? 90 : 0) +
-          (normalizeText(b.memberId).includes(q) ? 40 : 0) +
-          (normalizeText(b.name).includes(q) ? 30 : 0);
-
-        if (bScore !== aScore) return bScore - aScore;
-        return a.totalPt - b.totalPt;
-      });
-
-      return partial[0];
-    }
-
-    function getMomentumText(player) {
-      const hasWeekly = player.weeklyRank !== "";
-      const hasTotal = player.totalRank !== "";
-
-      if (hasWeekly && Number(player.weeklyRank) === 1) {
-        return "今週の首位です。最も目立つ場所に立っています。";
-      }
-      if (hasWeekly && Number(player.weeklyRank) <= 3) {
-        return "今週の表彰圏です。明確に上位層に入っています。";
-      }
-      if (hasWeekly && Number(player.weeklyRank) <= 10) {
-        return "今週のTOP10圏内です。このまま維持でも十分に存在感があります。";
-      }
-      if (hasTotal && Number(player.totalRank) <= 3) {
-        return "総合で表彰圏です。継続の強さがそのまま順位に出ています。";
-      }
-      if (hasTotal && Number(player.totalRank) <= 10) {
-        return "総合TOP10圏内です。CCL内でかなり強い位置にいます。";
-      }
-      if (hasWeekly) {
-        return "今週のランキングに入っています。ここから上位を狙える位置です。";
-      }
-      if (hasTotal) {
-        return "総合ランキングに入っています。積み上げがしっかり可視化されています。";
-      }
-      return "現在この公開範囲のランキングでは上位表示外です。ここから一気に食い込めます。";
-    }
-
-    function renderSearchResult(player, query) {
-      if (!player) {
-        state.highlightedMemberId = "";
-        state.highlightedName = "";
-        rerenderListsOnly();
-
-        el.searchResult.className = "search-empty";
-        el.searchResult.innerHTML = `「${escapeHtml(query)}」に一致するメンバーが見つかりませんでした。<br />member_id または Discord名の一部で検索してください。`;
-        return;
-      }
-
-      state.highlightedMemberId = player.memberId || "";
-      state.highlightedName = player.name || "";
-      rerenderListsOnly();
-
-      const weeklyRankText = player.weeklyRank ? `${escapeHtml(player.weeklyRank)}位` : "圏外";
-      const totalRankText = player.totalRank ? `${escapeHtml(player.totalRank)}位` : "圏外";
-      const rankLabelText = player.rankLabel ? escapeHtml(player.rankLabel) : "未設定";
-      const momentumText = escapeHtml(getMomentumText(player));
-
-      el.searchResult.className = "";
-      el.searchResult.innerHTML = `
-        <article class="player-card">
-          <div class="player-top">
-            <div class="player-meta">
-              <div class="player-identity">
-                <h3 class="player-name">${escapeHtml(player.name || "-")}</h3>
-                <div class="player-id">${escapeHtml(player.memberId || "")}</div>
-              </div>
-              <div class="player-rank-badge">ランク / ${rankLabelText}</div>
-            </div>
-
-            <div class="player-highlights">
-              <div class="highlight-card">
-                <div class="label">総合順位</div>
-                <div class="value">${totalRankText}</div>
-                <div class="note">累計ポイントでの現在地</div>
-              </div>
-              <div class="highlight-card">
-                <div class="label">総合 pt</div>
-                <div class="value">${escapeHtml(formatNumber(player.totalPt))}</div>
-                <div class="note">積み上げた総量</div>
-              </div>
-              <div class="highlight-card">
-                <div class="label">週間順位</div>
-                <div class="value">${weeklyRankText}</div>
-                <div class="note">今週の勝負位置</div>
-              </div>
-              <div class="highlight-card">
-                <div class="label">週間 pt</div>
-                <div class="value">${escapeHtml(formatNumber(player.weeklyPt))}</div>
-                <div class="note">今週の活動量</div>
-              </div>
-            </div>
-          </div>
-          <div class="player-foot">
-            ${momentumText}
-          </div>
-        </article>
-      `;
-
-      requestAnimationFrame(() => {
-        const matchRows = document.querySelectorAll(`.row[data-member-id="${cssEscape(player.memberId || "")}"]`);
-        if (matchRows.length) {
-          matchRows[0].scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-      });
-    }
-
-    function cssEscape(value) {
-      if (window.CSS && typeof window.CSS.escape === "function") {
-        return window.CSS.escape(value);
-      }
-      return String(value).replace(/["\\]/g, "\\$&");
-    }
-
     function renderTopAndLists() {
-      const weeklySplit = splitTop3(state.weeklyRows);
-      const totalSplit = splitTop3(state.totalRows);
+      const weekly = splitTop3(state.weeklyRows);
+      const total = splitTop3(state.totalRows);
 
-      renderPodiums(el.weeklyTop3, weeklySplit.top3, "weekly");
-      renderPodiums(el.totalTop3, totalSplit.top3, "total");
-      renderRows(el.weeklyList, weeklySplit.rest, "weekly");
-      renderRows(el.totalList, totalSplit.rest, "total");
+      renderPodiums(el.weeklyTop3, weekly.top3, "weekly");
+      renderPodiums(el.totalTop3, total.top3, "total");
+      renderRows(el.weeklyList, weekly.rest, "weekly");
+      renderRows(el.totalList, total.rest, "total");
 
       el.weeklyListMeta.textContent = `${state.weeklyRows.length}名表示`;
       el.totalListMeta.textContent = `${state.totalRows.length}名表示`;
     }
 
     function rerenderListsOnly() {
-      const weeklySplit = splitTop3(state.weeklyRows);
-      const totalSplit = splitTop3(state.totalRows);
-
-      renderRows(el.weeklyList, weeklySplit.rest, "weekly");
-      renderRows(el.totalList, totalSplit.rest, "total");
+      const weekly = splitTop3(state.weeklyRows);
+      const total = splitTop3(state.totalRows);
+      renderRows(el.weeklyList, weekly.rest, "weekly");
+      renderRows(el.totalList, total.rest, "total");
     }
 
     function setLoadingState() {
-      el.weeklyTop3.innerHTML = `<div class="loading">週間ランキングを読み込み中...</div>`;
-      el.totalTop3.innerHTML = `<div class="loading">総合ランキングを読み込み中...</div>`;
-      el.weeklyList.innerHTML = `<div class="loading">読み込み中...</div>`;
-      el.totalList.innerHTML = `<div class="loading">読み込み中...</div>`;
+      el.weeklyTop3.innerHTML = '<div class="loading">週間ランキングを読み込み中...</div>';
+      el.totalTop3.innerHTML = '<div class="loading">総合ランキングを読み込み中...</div>';
+      el.weeklyList.innerHTML = '<div class="loading">読み込み中...</div>';
+      el.totalList.innerHTML = '<div class="loading">読み込み中...</div>';
       el.weeklyListMeta.textContent = "読み込み中...";
       el.totalListMeta.textContent = "読み込み中...";
-      el.searchResult.className = "search-loading";
-      el.searchResult.innerHTML = `ランキングデータを読み込み中...`;
+      el.searchResult.innerHTML = '<div class="search-loading">ランキングデータを読み込み中...</div>';
       el.heroStatusText.textContent = "LOADING";
       el.lastUpdatedText.textContent = "取得中...";
     }
 
     function setErrorState(message) {
-      const errorHtml = `
+      const html = `
         <div class="error-box">
           ${escapeHtml(message)}<br />
           <button class="retry-button" type="button" onclick="loadCSV()">再読み込み</button>
         </div>
       `;
-      el.weeklyTop3.innerHTML = errorHtml;
-      el.totalTop3.innerHTML = errorHtml;
-      el.weeklyList.innerHTML = errorHtml;
-      el.totalList.innerHTML = errorHtml;
+      el.weeklyTop3.innerHTML = html;
+      el.totalTop3.innerHTML = html;
+      el.weeklyList.innerHTML = html;
+      el.totalList.innerHTML = html;
       el.weeklyListMeta.textContent = "取得失敗";
       el.totalListMeta.textContent = "取得失敗";
-      el.searchResult.className = "search-error";
-      el.searchResult.innerHTML = `データ取得に失敗したため検索できません。`;
+      el.searchResult.innerHTML = '<div class="search-error">データ取得に失敗したため検索できません。</div>';
       el.heroStatusText.textContent = "ERROR";
       el.lastUpdatedText.textContent = "取得失敗";
     }
 
     async function fetchCSVText(url) {
-      const response = await fetch(url, {
-        method: "GET",
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error(`CSVの取得に失敗しました（${response.status}）`);
-      }
-
+      const response = await fetch(url, { method: "GET", cache: "no-store" });
+      if (!response.ok) throw new Error(`CSVの取得に失敗しました（${response.status}）`);
       return response.text();
     }
 
     function buildRows(parsedRows) {
-      if (!parsedRows || parsedRows.length < 2) {
-        throw new Error("CSVデータが空です");
-      }
+      if (!parsedRows || parsedRows.length < 2) throw new Error("CSVデータが空です");
 
       const weeklyRows = [];
       const totalRows = [];
@@ -2178,6 +1150,301 @@
       return { weeklyRows, totalRows };
     }
 
+    function formatDateTimeJST(date) {
+      return new Intl.DateTimeFormat("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).format(date);
+    }
+
+    function getJSTNowParts(date = new Date()) {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).formatToParts(date);
+
+      const obj = {};
+      parts.forEach(part => {
+        if (part.type !== "literal") obj[part.type] = part.value;
+      });
+      return obj;
+    }
+
+    function getWeekResetCountdown() {
+      const now = new Date();
+      const parts = getJSTNowParts(now);
+      const jYear = Number(parts.year);
+      const jMonth = Number(parts.month);
+      const jDay = Number(parts.day);
+      const weekdayShort = parts.weekday;
+      const jHour = Number(parts.hour);
+      const jMinute = Number(parts.minute);
+      const jSecond = Number(parts.second);
+      const weekMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const weekday = weekMap[weekdayShort] ?? 0;
+
+      const resetDateUtc = new Date(Date.UTC(jYear, jMonth - 1, jDay, -9, 0, 0));
+      const nextResetUtc = new Date(resetDateUtc);
+      const addDays = weekday === 0 && (jHour > 0 || jMinute > 0 || jSecond > 0) ? 7 : (7 - weekday) % 7;
+      nextResetUtc.setUTCDate(nextResetUtc.getUTCDate() + addDays);
+
+      const diff = Math.max(0, nextResetUtc.getTime() - now.getTime());
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      return { days, hours, minutes, seconds, nextResetUtc };
+    }
+
+    function updateCountdown() {
+      const { days, hours, minutes, seconds, nextResetUtc } = getWeekResetCountdown();
+
+      el.daysValue.textContent = String(days);
+      el.hoursValue.textContent = String(hours).padStart(2, "0");
+      el.minutesValue.textContent = String(minutes).padStart(2, "0");
+      el.secondsValue.textContent = String(seconds).padStart(2, "0");
+      el.nextResetMain.textContent = `${String(hours + days * 24).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      el.weeklyResetLabel.textContent = "日曜 0:00 更新";
+
+      const label = new Intl.DateTimeFormat("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        month: "numeric",
+        day: "numeric",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).format(nextResetUtc);
+
+      el.resetDetailText.textContent = `次の週間リセットは ${label}（JST）です。今週の順位はこのタイミングで切り替わります。`;
+    }
+
+    function findPlayer(query, type = "all") {
+      const q = normalizeText(query);
+      if (!q) return null;
+
+      const players = Array.from(state.playersMap.values());
+
+      let exact;
+      if (type === "member_id") {
+        exact = players.find(p => normalizeText(p.memberId) === q);
+      } else if (type === "discord_name") {
+        exact = players.find(p => normalizeText(p.name) === q);
+      } else {
+        exact = players.find(p => normalizeText(p.memberId) === q || normalizeText(p.name) === q);
+      }
+      if (exact) return exact;
+
+      const partial = players.filter(player => {
+        const idMatch = normalizeText(player.memberId).includes(q);
+        const nameMatch = normalizeText(player.name).includes(q);
+        if (type === "member_id") return idMatch;
+        if (type === "discord_name") return nameMatch;
+        return idMatch || nameMatch || player.searchTokens.some(token => token && token.includes(q));
+      });
+
+      if (!partial.length) return null;
+
+      partial.sort((a, b) => {
+        const aId = normalizeText(a.memberId);
+        const aName = normalizeText(a.name);
+        const bId = normalizeText(b.memberId);
+        const bName = normalizeText(b.name);
+
+        const score = (id, name) => {
+          let s = 0;
+          if (type !== "discord_name") {
+            if (id.startsWith(q)) s += 120;
+            if (id.includes(q)) s += 50;
+          }
+          if (type !== "member_id") {
+            if (name.startsWith(q)) s += 110;
+            if (name.includes(q)) s += 45;
+          }
+          return s;
+        };
+
+        const diff = score(bId, bName) - score(aId, aName);
+        if (diff !== 0) return diff;
+        return toNumber(b.totalPt) - toNumber(a.totalPt);
+      });
+
+      return partial[0];
+    }
+
+    function getMomentumText(player) {
+      const hasWeekly = player.weeklyRank !== "";
+      const hasTotal = player.totalRank !== "";
+
+      if (hasTotal && Number(player.totalRank) === 1) return "総合首位です。現時点で最も価値の高いポジションにいます。";
+      if (hasTotal && Number(player.totalRank) <= 3) return "総合表彰圏です。CCL内で明確に格上の位置です。";
+      if (hasWeekly && Number(player.weeklyRank) === 1) return "今週の首位です。最も目立つ場所に立っています。";
+      if (hasWeekly && Number(player.weeklyRank) <= 3) return "今週の表彰圏です。主役ポジションに入っています。";
+      if (hasTotal && Number(player.totalRank) <= 10) return "総合TOP10圏内です。継続の強さがそのまま順位に出ています。";
+      if (hasWeekly && Number(player.weeklyRank) <= 10) return "週間TOP10圏内です。今週しっかり存在感を出しています。";
+      if (hasWeekly) return "今週のランキングには入っています。ここから一気に上位を狙える位置です。";
+      if (hasTotal) return "総合ランキングには入っています。積み上げがきちんと可視化されています。";
+      return "現在この公開範囲では上位表示外です。ここから食い込めば一気に見え方が変わります。";
+    }
+
+    function preferredBoardForPlayer(player) {
+      if (player.totalRank && (!player.weeklyRank || Number(player.totalRank) <= Number(player.weeklyRank))) {
+        return "total";
+      }
+      if (player.weeklyRank) return "weekly";
+      return "weekly";
+    }
+
+    function setActiveBoard(board) {
+      state.activeBoard = board;
+      el.weeklyBoard.classList.toggle("active", board === "weekly");
+      el.totalBoard.classList.toggle("active", board === "total");
+
+      document.querySelectorAll(".switch-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.board === board);
+      });
+    }
+
+    function scrollToFocusedRow(memberId) {
+      if (!memberId) return;
+
+      requestAnimationFrame(() => {
+        const rows = document.querySelectorAll(`.row[data-member-id="${cssEscape(memberId)}"]`);
+        if (!rows.length) return;
+
+        let target = rows[0];
+        if (state.activeBoard === "total") {
+          const totalMatch = Array.from(rows).find(node => node.closest("#totalBoard"));
+          if (totalMatch) target = totalMatch;
+        } else {
+          const weeklyMatch = Array.from(rows).find(node => node.closest("#weeklyBoard"));
+          if (weeklyMatch) target = weeklyMatch;
+        }
+
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    }
+
+    function renderSearchResult(player, query, shouldScroll = false) {
+      if (!player) {
+        state.focusMemberId = "";
+        rerenderListsOnly();
+        el.searchResult.innerHTML = `<div class="search-empty">「${escapeHtml(query)}」に一致するメンバーが見つかりませんでした。<br />member_id または Discord名の一部で検索してください。</div>`;
+        return;
+      }
+
+      state.focusMemberId = player.memberId || "";
+      rerenderListsOnly();
+
+      const weeklyRankText = player.weeklyRank ? `${escapeHtml(player.weeklyRank)}位` : "圏外";
+      const totalRankText = player.totalRank ? `${escapeHtml(player.totalRank)}位` : "圏外";
+      const rankLabelText = player.rankLabel ? escapeHtml(player.rankLabel) : "未設定";
+      const momentumText = escapeHtml(getMomentumText(player));
+
+      el.searchResult.innerHTML = `
+        <article>
+          <div class="player-top">
+            <div class="player-meta">
+              <div>
+                <h3 class="player-name">${escapeHtml(player.name || "-")}</h3>
+                <div class="player-id">${escapeHtml(player.memberId || "")}</div>
+              </div>
+              <div class="rank-badge">ランク / ${rankLabelText}</div>
+            </div>
+
+            <div class="player-highlights">
+              <div class="highlight">
+                <div class="k">総合順位</div>
+                <div class="v">${totalRankText}</div>
+                <div class="s">累計ポイントでの現在地</div>
+              </div>
+              <div class="highlight">
+                <div class="k">総合 pt</div>
+                <div class="v">${escapeHtml(formatNumber(player.totalPt))}</div>
+                <div class="s">積み上げた総量</div>
+              </div>
+              <div class="highlight">
+                <div class="k">週間順位</div>
+                <div class="v">${weeklyRankText}</div>
+                <div class="s">今週の勝負位置</div>
+              </div>
+              <div class="highlight">
+                <div class="k">週間 pt</div>
+                <div class="v">${escapeHtml(formatNumber(player.weeklyPt))}</div>
+                <div class="s">今週の活動量</div>
+              </div>
+            </div>
+          </div>
+          <div class="player-foot">${momentumText}</div>
+          <div class="search-actions">
+            <button class="mini-btn" type="button" onclick="jumpToPlayerBoard('${escapeJs(player.memberId || "")}','weekly')">週間で見る</button>
+            <button class="mini-btn" type="button" onclick="jumpToPlayerBoard('${escapeJs(player.memberId || "")}','total')">総合で見る</button>
+          </div>
+        </article>
+      `;
+
+      const board = preferredBoardForPlayer(player);
+      setActiveBoard(board);
+
+      if (shouldScroll) {
+        scrollToFocusedRow(player.memberId || "");
+      }
+    }
+
+    function cssEscape(value) {
+      if (window.CSS && typeof window.CSS.escape === "function") return window.CSS.escape(value);
+      return String(value).replace(/["\\]/g, "\\$&");
+    }
+
+    function escapeJs(value) {
+      return String(value ?? "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+    }
+
+    function clearFocus() {
+      state.focusMemberId = "";
+      rerenderListsOnly();
+      el.searchResult.innerHTML = `
+        <div class="search-empty">
+          member_id または Discord名を入力して検索してください。<br />
+          一致したメンバーの週間順位・総合順位・ポイント・ランクを表示します。
+        </div>
+      `;
+    }
+
+    function handleSearchSubmit(e) {
+      e.preventDefault();
+      if (!state.loaded) return;
+
+      const query = el.searchInput.value.trim();
+      const type = el.searchType.value;
+
+      if (!query) {
+        clearFocus();
+        return;
+      }
+
+      const player = findPlayer(query, type);
+      renderSearchResult(player, query, true);
+    }
+
+    function buildFooterSourceText() {
+      el.footerSourceText.textContent = "Source: site_ranking (Google Sheets CSV)";
+    }
+
     async function loadCSV() {
       setLoadingState();
 
@@ -2195,18 +1462,20 @@
         state.lastFetchDate = new Date();
 
         renderTopAndLists();
+        buildFooterSourceText();
 
         el.heroWeeklyCount.textContent = String(weeklyRows.length);
         el.heroTotalCount.textContent = String(totalRows.length);
         el.heroStatusText.textContent = "LIVE";
+        el.heroSearchMode.textContent = "BTN";
         el.lastUpdatedText.textContent = formatDateTimeJST(state.lastFetchDate);
-        el.footerSourceText.textContent = "Source: site_ranking (Google Sheets CSV)";
-        el.searchResult.className = "search-empty";
-        el.searchResult.innerHTML = `member_id または Discord名で検索してください。<br />一致したメンバーの週間順位・総合順位・pt・ランクを表示します。`;
 
         const currentQuery = el.searchInput.value.trim();
         if (currentQuery) {
-          renderSearchResult(findPlayer(currentQuery), currentQuery);
+          const player = findPlayer(currentQuery, el.searchType.value);
+          renderSearchResult(player, currentQuery, false);
+        } else {
+          clearFocus();
         }
 
       } catch (error) {
@@ -2215,30 +1484,32 @@
       }
     }
 
-    function handleSearchInput() {
-      if (!state.loaded) return;
-
-      const query = el.searchInput.value.trim();
-
-      if (!query) {
-        state.highlightedMemberId = "";
-        state.highlightedName = "";
-        rerenderListsOnly();
-        el.searchResult.className = "search-empty";
-        el.searchResult.innerHTML = `member_id または Discord名で検索してください。<br />一致したメンバーの週間順位・総合順位・pt・ランクを表示します。`;
-        return;
-      }
-
-      const player = findPlayer(query);
-      renderSearchResult(player, query);
+    function attachBoardSwitch() {
+      el.boardSwitch.addEventListener("click", (e) => {
+        const btn = e.target.closest(".switch-btn");
+        if (!btn) return;
+        setActiveBoard(btn.dataset.board);
+      });
     }
 
-    el.searchInput.addEventListener("input", handleSearchInput);
-    el.searchForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      handleSearchInput();
+    function jumpToPlayerBoard(memberId, board) {
+      setActiveBoard(board);
+      state.focusMemberId = memberId || "";
+      rerenderListsOnly();
+      scrollToFocusedRow(memberId);
+    }
+    window.jumpToPlayerBoard = jumpToPlayerBoard;
+    window.loadCSV = loadCSV;
+
+    el.searchForm.addEventListener("submit", handleSearchSubmit);
+    el.clearSearchBtn.addEventListener("click", function () {
+      el.searchInput.value = "";
+      el.searchType.value = "all";
+      clearFocus();
     });
 
+    attachBoardSwitch();
+    setActiveBoard("weekly");
     updateCountdown();
     setInterval(updateCountdown, 1000);
     loadCSV();
