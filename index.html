@@ -3,267 +3,1613 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCL Ranking</title>
+  <title>CCL Official Ranking</title>
+  <meta name="description" content="CCL公式ランキングサイト｜週間活動ランキング・総合ランキング" />
   <style>
+    :root {
+      --bg: #050816;
+      --bg-2: #091224;
+      --panel: rgba(10, 18, 35, 0.84);
+      --panel-strong: rgba(9, 16, 31, 0.96);
+      --line: rgba(255,255,255,0.11);
+      --line-strong: rgba(255,255,255,0.18);
+      --text: #edf3ff;
+      --muted: #93a4c3;
+      --muted-2: #6f829f;
+      --gold-1: #fff4bf;
+      --gold-2: #f0c85c;
+      --gold-3: #b9831a;
+      --silver-1: #f8fbff;
+      --silver-2: #c7d2e2;
+      --silver-3: #8697b0;
+      --bronze-1: #ffd4b2;
+      --bronze-2: #cb8e52;
+      --bronze-3: #8a5427;
+      --blue-glow: rgba(76, 137, 255, 0.22);
+      --gold-glow: rgba(240, 200, 92, 0.22);
+      --shadow-xl:
+        0 24px 80px rgba(0, 0, 0, 0.55),
+        0 10px 30px rgba(0, 0, 0, 0.26);
+      --shadow-lg:
+        0 18px 50px rgba(0, 0, 0, 0.42),
+        0 8px 20px rgba(0, 0, 0, 0.22);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --transition: 180ms ease;
+      --max-width: 1380px;
+    }
+
     * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color: var(--text);
+      font-family:
+        "Inter",
+        "Hiragino Sans",
+        "Hiragino Kaku Gothic ProN",
+        "Noto Sans JP",
+        "Yu Gothic UI",
+        "Segoe UI",
+        sans-serif;
       background:
-        radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 35%),
-        radial-gradient(circle at right, rgba(168,85,247,0.16), transparent 30%),
-        linear-gradient(180deg, #020617 0%, #0f172a 55%, #111827 100%);
-      color: #e5e7eb;
+        radial-gradient(circle at 20% -10%, rgba(68, 117, 217, 0.16), transparent 30%),
+        radial-gradient(circle at 80% 0%, rgba(194, 155, 56, 0.11), transparent 22%),
+        radial-gradient(circle at 50% 120%, rgba(66, 43, 133, 0.18), transparent 28%),
+        linear-gradient(180deg, #02040b 0%, #071120 28%, #08101e 55%, #04070f 100%);
       min-height: 100vh;
-      padding: 32px 16px 60px;
+      letter-spacing: 0.01em;
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%),
+        repeating-linear-gradient(
+          to right,
+          rgba(255,255,255,0.018) 0,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px,
+          transparent 96px
+        ),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.014) 0,
+          rgba(255,255,255,0.014) 1px,
+          transparent 1px,
+          transparent 96px
+        );
+      opacity: 0.35;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.45));
+    }
+
     .wrap {
-      max-width: 1100px;
+      max-width: var(--max-width);
       margin: 0 auto;
+      padding: 28px 16px 70px;
+      position: relative;
+      z-index: 1;
     }
-    .hero {
-      text-align: center;
-      margin-bottom: 28px;
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015)),
+        rgba(7, 12, 24, 0.72);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
     }
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: 38px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: #f8fafc;
-      text-shadow: 0 0 18px rgba(255,255,255,0.12);
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
     }
-    .hero p {
-      margin: 0;
-      color: #94a3b8;
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.28), transparent 35%),
+        linear-gradient(145deg, #101c37, #070d1b);
+      display: grid;
+      place-items: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 10px 24px rgba(0,0,0,0.35);
+      font-weight: 900;
+      color: #f7d36b;
+      letter-spacing: 0.08em;
       font-size: 14px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
+
+    .brand-text {
+      min-width: 0;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.78);
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      border-radius: 22px;
-      padding: 20px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-      backdrop-filter: blur(10px);
+
+    .brand-text .eyebrow {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      white-space: nowrap;
     }
-    .card h2 {
-      margin: 0 0 14px;
-      font-size: 22px;
+
+    .brand-text .title {
+      font-size: 16px;
       font-weight: 800;
-      letter-spacing: 0.04em;
+      color: #f8fbff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .sub {
+
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
       font-size: 12px;
-      color: #94a3b8;
+      white-space: nowrap;
+    }
+
+    .trust-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #7ef2a8;
+      box-shadow: 0 0 12px rgba(126,242,168,0.55);
+      flex: 0 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)),
+        radial-gradient(circle at 20% 20%, rgba(72, 115, 215, 0.20), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(226, 179, 63, 0.16), transparent 22%),
+        linear-gradient(180deg, rgba(6,11,22,0.98), rgba(5,9,18,0.93));
+      box-shadow: var(--shadow-xl);
+      padding: 34px 26px 24px;
+      margin-bottom: 22px;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero::before {
+      top: -80px;
+      right: -40px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(241, 203, 93, 0.15), transparent 68%);
+      filter: blur(8px);
+    }
+
+    .hero::after {
+      left: -70px;
+      bottom: -100px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85, 132, 255, 0.18), transparent 68%);
+      filter: blur(10px);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.035);
+      color: #dbe7ff;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: 0.06em;
+      font-weight: 900;
+      color: #f9fbff;
+      text-shadow:
+        0 0 24px rgba(255,255,255,0.06),
+        0 12px 34px rgba(0,0,0,0.32);
+    }
+
+    .hero h1 .accent {
+      display: block;
+      background: linear-gradient(180deg, #fff8de 0%, #f0c95b 55%, #b6811f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: #a9b9d2;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-stat {
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+        rgba(7, 13, 27, 0.72);
+      border-radius: 18px;
+      padding: 14px 14px 13px;
+      min-height: 94px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .hero-stat .label {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat .value {
+      font-size: 24px;
+      font-weight: 900;
+      color: #f8fbff;
+      line-height: 1.1;
+    }
+
+    .hero-stat .sub {
+      font-size: 11px;
+      color: var(--muted-2);
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .signal-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+        rgba(5, 10, 21, 0.84);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      padding: 18px 18px 16px;
+    }
+
+    .signal-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(240,200,92,0.95), rgba(255,255,255,0));
+      opacity: 0.9;
+    }
+
+    .signal-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #dbe6f8;
+      margin-bottom: 10px;
+    }
+
+    .countdown-main {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-main .big {
+      font-size: 38px;
+      line-height: 0.95;
+      font-weight: 900;
+      color: #f9fbff;
+    }
+
+    .countdown-main .unit {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .count-chip {
+      padding: 10px 8px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.025);
+      text-align: center;
+    }
+
+    .count-chip .num {
+      display: block;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .count-chip .txt {
+      display: block;
+      margin-top: 3px;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .signal-foot {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .search-section {
+      margin-bottom: 22px;
+    }
+
+    .search-panel {
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        rgba(6, 12, 24, 0.80);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .search-head {
+      padding: 18px 20px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #f7fbff;
+      margin: 0;
+    }
+
+    .section-sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .search-body {
+      display: grid;
+      grid-template-columns: minmax(340px, 0.95fr) minmax(340px, 1.05fr);
+      gap: 0;
+    }
+
+    .search-form-wrap {
+      padding: 20px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .search-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .search-input-wrap {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 58px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02)),
+        rgba(5,10,20,0.9);
+      color: #f8fbff;
+      padding: 0 56px 0 18px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .search-input::placeholder {
+      color: #72839d;
+    }
+
+    .search-input:focus {
+      border-color: rgba(102, 153, 255, 0.5);
+      box-shadow:
+        0 0 0 4px rgba(79, 128, 255, 0.14),
+        0 16px 35px rgba(0,0,0,0.26);
+      transform: translateY(-1px);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #8ca0c2;
+      pointer-events: none;
+    }
+
+    .search-help {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted-2);
+      font-size: 12px;
+    }
+
+    .search-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      color: var(--muted);
+    }
+
+    .search-result-wrap {
+      padding: 20px;
+      min-height: 260px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .search-empty,
+    .search-loading,
+    .search-error {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px dashed rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.02);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 24px;
+      line-height: 1.8;
+    }
+
+    .search-error {
+      color: #ffb3b3;
+      border-color: rgba(255, 122, 122, 0.28);
+      background: rgba(70, 16, 16, 0.18);
+    }
+
+    .player-card {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.11);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+        rgba(5,10,20,0.86);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .player-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, #f1cb5d, #4c89ff);
+      opacity: 0.95;
+    }
+
+    .player-top {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at 85% 15%, rgba(241,203,93,0.12), transparent 18%),
+        radial-gradient(circle at 15% 20%, rgba(76,137,255,0.12), transparent 18%);
+    }
+
+    .player-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .player-identity {
+      min-width: 0;
+    }
+
+    .player-name {
+      font-size: 28px;
+      line-height: 1.12;
+      font-weight: 900;
+      color: #f8fbff;
+      margin: 0 0 8px;
+      word-break: break-word;
+    }
+
+    .player-id {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .player-rank-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        rgba(9,16,31,0.95);
+      font-size: 13px;
+      font-weight: 800;
+      color: #f8fbff;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .player-highlights {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .highlight-card {
+      border-radius: 16px;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        rgba(8,14,28,0.8);
+      min-height: 92px;
+    }
+
+    .highlight-card .label {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .highlight-card .value {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 900;
+      color: #f9fbff;
+      margin-bottom: 8px;
+    }
+
+    .highlight-card .note {
+      color: var(--muted-2);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .player-foot {
+      padding: 14px 22px 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .boards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .board {
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        rgba(5, 10, 20, 0.84);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .board-head {
+      position: relative;
+      overflow: hidden;
+      padding: 22px 22px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0)),
+        rgba(6, 11, 22, 0.82);
+    }
+
+    .board-head::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(100,145,255,0.85), rgba(255,255,255,0));
+      opacity: 0.75;
+    }
+
+    .board-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .board-title-wrap {
+      min-width: 0;
+    }
+
+    .board-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #f8fbff;
+    }
+
+    .board-sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .board-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      color: #dfe9fb;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .board-badge strong {
+      color: #fff;
+    }
+
+    .top3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .podium {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        rgba(8,14,28,0.88);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 16px 36px rgba(0,0,0,0.25);
+    }
+
+    .podium::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      opacity: 0.95;
+    }
+
+    .podium::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(14px);
+      opacity: 0.25;
+    }
+
+    .podium.rank1 {
+      padding: 22px 20px 20px;
+      border-color: rgba(241,203,93,0.36);
+      background:
+        linear-gradient(180deg, rgba(255,244,191,0.08), rgba(255,255,255,0.02)),
+        linear-gradient(145deg, rgba(40,26,3,0.86), rgba(12,16,28,0.95));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        0 22px 55px rgba(0,0,0,0.34),
+        0 0 0 1px rgba(241,203,93,0.10);
+    }
+
+    .podium.rank1::before {
+      background: linear-gradient(180deg, #fff3be, #efc857, #b7821f);
+    }
+
+    .podium.rank1::after {
+      background: radial-gradient(circle, rgba(241,203,93,0.95), transparent 65%);
+    }
+
+    .podium.rank2 {
+      border-color: rgba(199,210,226,0.26);
+      background:
+        linear-gradient(180deg, rgba(248,251,255,0.06), rgba(255,255,255,0.015)),
+        linear-gradient(145deg, rgba(18,24,39,0.92), rgba(8,12,22,0.95));
+    }
+
+    .podium.rank2::before {
+      background: linear-gradient(180deg, #fbfdff, #c9d3e3, #8597af);
+    }
+
+    .podium.rank2::after {
+      background: radial-gradient(circle, rgba(199,210,226,0.9), transparent 65%);
+    }
+
+    .podium.rank3 {
+      border-color: rgba(203,142,82,0.28);
+      background:
+        linear-gradient(180deg, rgba(255,212,178,0.06), rgba(255,255,255,0.015)),
+        linear-gradient(145deg, rgba(27,18,14,0.92), rgba(8,12,22,0.95));
+    }
+
+    .podium.rank3::before {
+      background: linear-gradient(180deg, #ffd4b2, #cb8e52, #885223);
+    }
+
+    .podium.rank3::after {
+      background: radial-gradient(circle, rgba(203,142,82,0.95), transparent 65%);
+    }
+
+    .podium-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .podium-place {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: fit-content;
+    }
+
+    .podium-place .num {
+      font-size: 38px;
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .podium.rank1 .podium-place .num {
+      color: #fff1b8;
+      text-shadow: 0 0 18px rgba(241,203,93,0.30);
+    }
+
+    .podium.rank2 .podium-place .num {
+      color: #eef5ff;
+    }
+
+    .podium.rank3 .podium-place .num {
+      color: #ffd4b2;
+    }
+
+    .podium-place .txt {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .podium-score {
+      text-align: right;
+    }
+
+    .podium-score .value {
+      font-size: 34px;
+      line-height: 0.95;
+      font-weight: 900;
+      color: #f9fbff;
+    }
+
+    .podium-score .unit {
+      margin-top: 5px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .podium-name {
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 900;
+      color: #ffffff;
+      margin: 0 0 8px;
+      word-break: break-word;
+    }
+
+    .podium-id {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       margin-bottom: 14px;
     }
+
+    .podium-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .podium-caption {
+      color: #d3deef;
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 72%;
+    }
+
+    .podium-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.04);
+      font-size: 12px;
+      color: #f8fbff;
+      white-space: nowrap;
+    }
+
+    .board-body {
+      padding: 18px 18px 20px;
+    }
+
+    .list-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+
     .list {
       display: grid;
       gap: 10px;
     }
+
     .row {
+      position: relative;
       display: grid;
-      grid-template-columns: 74px 1fr 72px;
-      gap: 10px;
+      grid-template-columns: 84px minmax(0, 1fr) 96px;
+      gap: 12px;
       align-items: center;
-      padding: 12px 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012)),
+        rgba(9, 15, 28, 0.72);
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+      overflow: hidden;
+    }
+
+    .row:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.22);
+    }
+
+    .row.highlighted {
+      border-color: rgba(241,203,93,0.36);
+      background:
+        linear-gradient(180deg, rgba(255,244,191,0.08), rgba(255,255,255,0.012)),
+        rgba(16, 18, 24, 0.92);
+      box-shadow:
+        0 0 0 1px rgba(241,203,93,0.09),
+        0 16px 38px rgba(0,0,0,0.28);
+    }
+
+    .row.highlighted::after {
+      content: "YOU";
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f6d56f;
+      font-weight: 900;
+      opacity: 0.95;
+    }
+
+    .rank-pill {
+      justify-self: stretch;
+      display: grid;
+      place-items: center;
+      min-height: 58px;
       border-radius: 16px;
-      background: rgba(30, 41, 59, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.12);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: #f8fbff;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
+        rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
     }
-    .rank {
+
+    .rank-pill.gold {
+      color: #1d1402;
+      border-color: rgba(241,203,93,0.28);
+      background: linear-gradient(180deg, #fff3be 0%, #f0c857 62%, #b7821f 100%);
+      box-shadow:
+        0 0 20px rgba(241,203,93,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    .rank-pill.silver {
+      color: #0f1723;
+      border-color: rgba(199,210,226,0.24);
+      background: linear-gradient(180deg, #f8fbff 0%, #c9d3e3 65%, #8597af 100%);
+    }
+
+    .rank-pill.bronze {
+      color: #1a120c;
+      border-color: rgba(203,142,82,0.26);
+      background: linear-gradient(180deg, #ffd4b2 0%, #cb8e52 62%, #885223 100%);
+    }
+
+    .rank-pill.normal {
+      color: #dce8fb;
+      background:
+        linear-gradient(180deg, rgba(91,120,180,0.20), rgba(126,92,177,0.15)),
+        rgba(255,255,255,0.03);
+    }
+
+    .member {
+      min-width: 0;
+    }
+
+    .member .name {
       font-weight: 800;
-      font-size: 18px;
-      text-align: center;
-      border-radius: 12px;
-      padding: 8px 6px;
-      background: rgba(255,255,255,0.05);
-    }
-    .name {
-      font-weight: 700;
       font-size: 16px;
+      color: #f8fbff;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      margin-bottom: 4px;
     }
-    .id {
+
+    .member .id {
       font-size: 11px;
-      color: #94a3b8;
-      margin-top: 2px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .pt {
+
+    .score {
       text-align: right;
-      font-weight: 800;
-      font-size: 18px;
-      color: #f8fafc;
     }
-    .pt span {
-      display: block;
+
+    .score .value {
+      font-size: 24px;
+      line-height: 0.95;
+      font-weight: 900;
+      color: #f8fbff;
+    }
+
+    .score .unit {
+      margin-top: 5px;
       font-size: 11px;
-      color: #94a3b8;
-      font-weight: 500;
-      margin-top: 2px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
-    .gold {
-      background: linear-gradient(135deg, #fef08a, #f59e0b);
-      color: #111827;
-      box-shadow: 0 0 18px rgba(245, 158, 11, 0.35);
-    }
-    .silver {
-      background: linear-gradient(135deg, #f8fafc, #94a3b8);
-      color: #111827;
-      box-shadow: 0 0 18px rgba(148, 163, 184, 0.25);
-    }
-    .bronze {
-      background: linear-gradient(135deg, #fdba74, #b45309);
-      color: #111827;
-      box-shadow: 0 0 18px rgba(180, 83, 9, 0.25);
-    }
-    .normal-rank {
-      background: linear-gradient(135deg, rgba(59,130,246,0.22), rgba(168,85,247,0.2));
-      color: #e5e7eb;
-    }
-    .loading, .error {
-      padding: 20px;
+
+    .loading,
+    .empty,
+    .error-box {
+      padding: 22px 16px;
       text-align: center;
-      color: #94a3b8;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,0.12);
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+      line-height: 1.8;
     }
-    .error { color: #fca5a5; }
+
+    .error-box {
+      border-color: rgba(255, 122, 122, 0.26);
+      color: #ffc1c1;
+      background: rgba(70, 16, 16, 0.14);
+    }
+
+    .retry-button {
+      margin-top: 10px;
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)),
+        rgba(9,16,31,0.95);
+      color: #f8fbff;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .retry-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
     .footer {
-      text-align: center;
       margin-top: 28px;
-      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted-2);
       font-size: 12px;
+    }
+
+    .footer strong {
+      color: #dbe7fb;
+      font-weight: 800;
+    }
+
+    .mono {
+      font-family:
+        ui-monospace,
+        "SFMono-Regular",
+        "Cascadia Code",
+        "Consolas",
+        "Liberation Mono",
+        monospace;
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1140px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .boards {
+        grid-template-columns: 1fr;
+      }
+
+      .search-body {
+        grid-template-columns: 1fr;
+      }
+
+      .search-form-wrap {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+    }
+
+    @media (max-width: 840px) {
+      .hero-stats,
+      .player-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .countdown-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .board-title {
+        font-size: 24px;
+      }
+
+      .player-name {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 14px 12px 48px;
+      }
+
+      .topbar {
+        padding: 12px 14px;
+      }
+
+      .hero {
+        padding: 24px 16px 18px;
+        border-radius: 24px;
+      }
+
+      .hero h1 {
+        letter-spacing: 0.04em;
+      }
+
+      .hero p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .search-head,
+      .search-form-wrap,
+      .search-result-wrap,
+      .board-head,
+      .board-body {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .board,
+      .search-panel {
+        border-radius: 22px;
+      }
+
+      .podium,
+      .player-card {
+        border-radius: 20px;
+      }
+
+      .row {
+        grid-template-columns: 74px minmax(0, 1fr) 76px;
+        gap: 10px;
+        padding: 13px 12px;
+      }
+
+      .rank-pill {
+        min-height: 54px;
+        font-size: 18px;
+      }
+
+      .member .name {
+        font-size: 15px;
+      }
+
+      .score .value {
+        font-size: 21px;
+      }
+
+      .podium-place .num,
+      .podium-score .value {
+        font-size: 30px;
+      }
+
+      .podium-name {
+        font-size: 21px;
+      }
+
+      .player-highlights {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .countdown-main .big {
+        font-size: 32px;
+      }
+
+      .footer {
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .player-highlights,
+      .countdown-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight-card,
+      .count-chip {
+        min-height: auto;
+      }
+
+      .row {
+        grid-template-columns: 68px minmax(0, 1fr) 68px;
+      }
+
+      .rank-pill {
+        font-size: 17px;
+      }
+
+      .score .value {
+        font-size: 19px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="hero">
-      <h1>CCL RANKING</h1>
-      <p>週間活動ランキング / 総合ランキング</p>
-    </div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true">CCL</div>
+        <div class="brand-text">
+          <div class="eyebrow">Official Ranking Site</div>
+          <div class="title">Calligraphy Championship League</div>
+        </div>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-chip">
+          <span class="trust-dot" aria-hidden="true"></span>
+          <span>公開データ連携中</span>
+        </div>
+        <div class="trust-chip">
+          <span>最終更新 <strong id="lastUpdatedText">取得中...</strong></span>
+        </div>
+      </div>
+    </header>
 
-    <div class="grid">
-      <section class="card">
-        <h2>週間ランキング</h2>
-        <div class="sub">今週の活動ポイント順位</div>
-        <div id="weeklyList" class="list">
-          <div class="loading">読み込み中...</div>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-label">CCL Official Ranking</div>
+          <h1>
+            頂点を目指す熱量が、
+            <span class="accent">ここに並ぶ。</span>
+          </h1>
+          <p>
+            週間ランキングは今この瞬間の勝負。総合ランキングは積み上げの証明。
+            CCLメンバーが自分の現在地を確認し、次の一手を決めるための公式ランキングサイトです。
+          </p>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="label">Weekly Ranking</div>
+              <div class="value" id="heroWeeklyCount">--</div>
+              <div class="sub">10位以内に入っている人数</div>
+            </div>
+            <div class="hero-stat">
+              <div class="label">Total Ranking</div>
+              <div class="value" id="heroTotalCount">--</div>
+              <div class="sub">10位以内に入っている人数</div>
+            </div>
+            <div class="hero-stat">
+              <div class="label">Status</div>
+              <div class="value" id="heroStatusText">LIVE</div>
+              <div class="sub">Google Sheets 公開CSVと同期</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="signal-card">
+            <div class="signal-title">Weekly Battle Window</div>
+            <div class="countdown-main">
+              <div class="big" id="nextResetMain">--:--:--</div>
+              <div class="unit">次の週切り替わりまで</div>
+            </div>
+            <div class="countdown-grid">
+              <div class="count-chip">
+                <span class="num" id="daysValue">--</span>
+                <span class="txt">Days</span>
+              </div>
+              <div class="count-chip">
+                <span class="num" id="hoursValue">--</span>
+                <span class="txt">Hours</span>
+              </div>
+              <div class="count-chip">
+                <span class="num" id="minutesValue">--</span>
+                <span class="txt">Minutes</span>
+              </div>
+              <div class="count-chip">
+                <span class="num" id="secondsValue">--</span>
+                <span class="txt">Seconds</span>
+              </div>
+            </div>
+            <div class="signal-foot" id="resetDetailText">
+              週間ランキングは日曜切り替え。今週の一手が、そのまま今週の順位になります。
+            </div>
+          </div>
+
+          <div class="signal-card">
+            <div class="signal-title">Ranking Signal</div>
+            <div class="signal-foot">
+              総合は積み上げ、週間は瞬間火力。
+              どちらも順位として可視化されるからこそ、動いた人が目立つ構造です。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="search-panel">
+        <div class="search-head">
+          <div>
+            <h2 class="section-title">自分の順位を検索</h2>
+            <div class="section-sub">
+              member_id または Discord名で検索できます。見つけた瞬間に、自分の現在地が一目で分かります。
+            </div>
+          </div>
+        </div>
+
+        <div class="search-body">
+          <div class="search-form-wrap">
+            <form class="search-form" id="searchForm" autocomplete="off">
+              <label class="sr-only" for="searchInput">member_id または Discord名で検索</label>
+              <div class="search-input-wrap">
+                <input
+                  id="searchInput"
+                  class="search-input"
+                  type="text"
+                  placeholder="member_id または Discord名を入力"
+                  inputmode="search"
+                  enterkeyhint="search"
+                />
+                <div class="search-icon" aria-hidden="true">⌕</div>
+              </div>
+              <div class="search-help">
+                <div class="search-tag">例: M0001</div>
+                <div class="search-tag">例: でぐち</div>
+                <div class="search-tag">部分一致OK</div>
+              </div>
+            </form>
+          </div>
+
+          <div class="search-result-wrap">
+            <div id="searchResult" class="search-empty">
+              ランキングデータ読み込み後に検索できます。<br />
+              自分の順位・ポイント・ランクをここに表示します。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="boards">
+      <section class="board">
+        <div class="board-head">
+          <div class="board-meta">
+            <div class="board-title-wrap">
+              <h2 class="board-title">週間ランキング</h2>
+              <div class="board-sub">今週の活動ポイント順位。今だけの勝負が、そのまま可視化されます。</div>
+            </div>
+            <div class="board-badge">
+              週切り替え <strong id="weeklyResetLabel">毎週日曜</strong>
+            </div>
+          </div>
+
+          <div id="weeklyTop3" class="top3">
+            <div class="loading">週間ランキングを読み込み中...</div>
+          </div>
+        </div>
+
+        <div class="board-body">
+          <div class="list-head">
+            <div>4位以下 / 10位以内表示</div>
+            <div id="weeklyListMeta">読み込み中...</div>
+          </div>
+          <div id="weeklyList" class="list">
+            <div class="loading">読み込み中...</div>
+          </div>
         </div>
       </section>
 
-      <section class="card">
-        <h2>総合ランキング</h2>
-        <div class="sub">累計ポイント順位</div>
-        <div id="totalList" class="list">
-          <div class="loading">読み込み中...</div>
+      <section class="board">
+        <div class="board-head">
+          <div class="board-meta">
+            <div class="board-title-wrap">
+              <h2 class="board-title">総合ランキング</h2>
+              <div class="board-sub">累計ポイント順位。継続して積み上げた実力が並びます。</div>
+            </div>
+            <div class="board-badge">
+              累計記録 <strong id="totalRecordLabel">ALL TIME</strong>
+            </div>
+          </div>
+
+          <div id="totalTop3" class="top3">
+            <div class="loading">総合ランキングを読み込み中...</div>
+          </div>
+        </div>
+
+        <div class="board-body">
+          <div class="list-head">
+            <div>4位以下 / 10位以内表示</div>
+            <div id="totalListMeta">読み込み中...</div>
+          </div>
+          <div id="totalList" class="list">
+            <div class="loading">読み込み中...</div>
+          </div>
         </div>
       </section>
-    </div>
+    </main>
 
-    <div class="footer">CCL Community Ranking</div>
+    <footer class="footer">
+      <div><strong>CCL Official Ranking Site</strong> / Weekly & Total Leaderboard</div>
+      <div class="mono" id="footerSourceText">Source: Google Sheets CSV</div>
+    </footer>
   </div>
 
   <script>
-    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_ERfMbfkBCYFLDUnYosX6_DSqd9KHCBPsMh6jOwBH0MEcJtQXUCoGiGaWR3Xd02p30Hde3NwqZ5hY/pub?gid=7718361&single=true&output=csv";
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_ERfMbfkBCYFLDUnYosX6_DSqd9KHCBPsMh6jOwBH0MEcJtQXUCoGiGaWR3Xd02p30Hde3NwqZ5hY/pub?gid=7718361&single=true&output=csv&encoding=utf-8";
 
-    async function loadCSV() {
-      const weeklyList = document.getElementById("weeklyList");
-      const totalList = document.getElementById("totalList");
+    const state = {
+      weeklyRows: [],
+      totalRows: [],
+      playersMap: new Map(),
+      loaded: false,
+      lastFetchDate: null,
+      highlightedMemberId: "",
+      highlightedName: ""
+    };
 
-      try {
-        const res = await fetch(CSV_URL);
-        if (!res.ok) throw new Error("CSV取得失敗");
-        const text = await res.text();
-
-        const rows = text.trim().split("\n").map(row =>
-          row.split(",").map(cell => cell.replace(/^"|"$/g, "").trim())
-        );
-
-        if (rows.length < 2) throw new Error("データなし");
-
-        const weeklyRows = [];
-        const totalRows = [];
-
-        for (let i = 1; i < rows.length; i++) {
-          const row = rows[i];
-
-          const weeklyRank = row[0];
-          const weeklyMemberId = row[1];
-          const weeklyName = row[2];
-          const weeklyPt = row[3];
-
-          const totalRank = row[6];
-          const totalMemberId = row[7];
-          const totalName = row[8];
-          const totalPt = row[9];
-
-          if (weeklyRank) {
-            weeklyRows.push({
-              rank: weeklyRank,
-              memberId: weeklyMemberId,
-              name: weeklyName,
-              pt: weeklyPt
-            });
-          }
-
-          if (totalRank) {
-            totalRows.push({
-              rank: totalRank,
-              memberId: totalMemberId,
-              name: totalName,
-              pt: totalPt
-            });
-          }
-        }
-
-        renderList(weeklyList, weeklyRows);
-        renderList(totalList, totalRows);
-
-      } catch (e) {
-        weeklyList.innerHTML = `<div class="error">週間ランキングの読み込みに失敗しました</div>`;
-        totalList.innerHTML = `<div class="error">総合ランキングの読み込みに失敗しました</div>`;
-        console.error(e);
-      }
-    }
-
-    function rankClass(rank) {
-      const n = Number(rank);
-      if (n === 1) return "gold";
-      if (n === 2) return "silver";
-      if (n === 3) return "bronze";
-      return "normal-rank";
-    }
-
-    function renderList(target, data) {
-      if (!data.length) {
-        target.innerHTML = `<div class="loading">表示できるデータがありません</div>`;
-        return;
-      }
-
-      target.innerHTML = data.map(item => `
-        <div class="row">
-          <div class="rank ${rankClass(item.rank)}">${item.rank}位</div>
-          <div>
-            <div class="name">${escapeHtml(item.name || "-")}</div>
-            <div class="id">${escapeHtml(item.memberId || "")}</div>
-          </div>
-          <div class="pt">${escapeHtml(item.pt || "0")}<span>pt</span></div>
-        </div>
-      `).join("");
-    }
+    const el = {
+      weeklyTop3: document.getElementById("weeklyTop3"),
+      totalTop3: document.getElementById("totalTop3"),
+      weeklyList: document.getElementById("weeklyList"),
+      totalList: document.getElementById("totalList"),
+      weeklyListMeta: document.getElementById("weeklyListMeta"),
+      totalListMeta: document.getElementById("totalListMeta"),
+      searchInput: document.getElementById("searchInput"),
+      searchForm: document.getElementById("searchForm"),
+      searchResult: document.getElementById("searchResult"),
+      lastUpdatedText: document.getElementById("lastUpdatedText"),
+      heroWeeklyCount: document.getElementById("heroWeeklyCount"),
+      heroTotalCount: document.getElementById("heroTotalCount"),
+      heroStatusText: document.getElementById("heroStatusText"),
+      footerSourceText: document.getElementById("footerSourceText"),
+      nextResetMain: document.getElementById("nextResetMain"),
+      daysValue: document.getElementById("daysValue"),
+      hoursValue: document.getElementById("hoursValue"),
+      minutesValue: document.getElementById("minutesValue"),
+      secondsValue: document.getElementById("secondsValue"),
+      resetDetailText: document.getElementById("resetDetailText"),
+      weeklyResetLabel: document.getElementById("weeklyResetLabel")
+    };
 
     function escapeHtml(str) {
-      return String(str)
+      return String(str ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -271,6 +1617,630 @@
         .replace(/'/g, "&#039;");
     }
 
+    function normalizeText(str) {
+      return String(str ?? "")
+        .normalize("NFKC")
+        .trim()
+        .toLowerCase();
+    }
+
+    function toNumber(value) {
+      const cleaned = String(value ?? "").replace(/[^\d.-]/g, "");
+      const n = Number(cleaned);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function formatNumber(value) {
+      return new Intl.NumberFormat("ja-JP").format(toNumber(value));
+    }
+
+    function parseCSVLine(line) {
+      const result = [];
+      let current = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        const next = line[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (char === "," && !inQuotes) {
+          result.push(current);
+          current = "";
+        } else {
+          current += char;
+        }
+      }
+
+      result.push(current);
+      return result.map(cell => cell.trim());
+    }
+
+    function parseCSV(text) {
+      const lines = [];
+      let current = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            current += '""';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+            current += char;
+          }
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (current.trim() !== "") lines.push(current);
+          current = "";
+
+          if (char === "\r" && next === "\n") i++;
+        } else {
+          current += char;
+        }
+      }
+
+      if (current.trim() !== "") lines.push(current);
+      return lines.map(parseCSVLine);
+    }
+
+    function rankClass(rank) {
+      const n = Number(rank);
+      if (n === 1) return "gold";
+      if (n === 2) return "silver";
+      if (n === 3) return "bronze";
+      return "normal";
+    }
+
+    function createPlayerKey(memberId, name) {
+      return normalizeText(memberId) + "||" + normalizeText(name);
+    }
+
+    function buildPlayersMap(weeklyRows, totalRows) {
+      const map = new Map();
+
+      function ensure(memberId, name) {
+        const key = createPlayerKey(memberId, name);
+        if (!map.has(key)) {
+          map.set(key, {
+            memberId: memberId || "",
+            name: name || "",
+            weeklyRank: "",
+            weeklyPt: 0,
+            totalRank: "",
+            totalPt: 0,
+            rankLabel: "",
+            searchTokens: []
+          });
+        }
+        return map.get(key);
+      }
+
+      weeklyRows.forEach(item => {
+        const player = ensure(item.memberId, item.name);
+        player.memberId = item.memberId || player.memberId;
+        player.name = item.name || player.name;
+        player.weeklyRank = item.rank || "";
+        player.weeklyPt = toNumber(item.pt);
+        player.rankLabel = item.rankLabel || player.rankLabel || "";
+      });
+
+      totalRows.forEach(item => {
+        const player = ensure(item.memberId, item.name);
+        player.memberId = item.memberId || player.memberId;
+        player.name = item.name || player.name;
+        player.totalRank = item.rank || "";
+        player.totalPt = toNumber(item.pt);
+        player.rankLabel = item.rankLabel || player.rankLabel || "";
+      });
+
+      map.forEach(player => {
+        player.searchTokens = [
+          normalizeText(player.memberId),
+          normalizeText(player.name),
+          normalizeText(player.rankLabel)
+        ];
+      });
+
+      return map;
+    }
+
+    function splitTop3(rows) {
+      const top3 = rows.filter(item => Number(item.rank) <= 3).sort((a, b) => Number(a.rank) - Number(b.rank));
+      const rest = rows.filter(item => Number(item.rank) > 3).sort((a, b) => Number(a.rank) - Number(b.rank));
+      return { top3, rest };
+    }
+
+    function getPodiumCaption(type, rank) {
+      if (type === "weekly") {
+        if (rank === 1) return "今週の先頭を走るトップ。最も目立つ位置に立つプレイヤー。";
+        if (rank === 2) return "頂点を射程に捉える追撃ポジション。今週の主役候補。";
+        if (rank === 3) return "表彰圏を確保する強者。ここから上を狙える位置。";
+      } else {
+        if (rank === 1) return "積み上げの頂点。CCL総合ランキングの現王者。";
+        if (rank === 2) return "頂点直下のポジション。継続力が形になった証明。";
+        if (rank === 3) return "表彰圏を守る実力者。総合上位の存在感を示す位置。";
+      }
+      return "";
+    }
+
+    function renderPodiums(target, rows, type) {
+      if (!rows.length) {
+        target.innerHTML = `<div class="empty">表示できるデータがありません</div>`;
+        return;
+      }
+
+      target.innerHTML = rows.map(item => {
+        const rank = Number(item.rank);
+        const scoreLabel = type === "weekly" ? "WEEKLY SCORE" : "TOTAL SCORE";
+        const badge = rank === 1 ? "LEADER" : rank === 2 ? "CHASER" : "TOP TIER";
+        return `
+          <article class="podium rank${rank}">
+            <div class="podium-top">
+              <div class="podium-place">
+                <div class="num">${rank}</div>
+                <div class="txt">${rank === 1 ? "Champion Seat" : rank === 2 ? "Second Place" : "Third Place"}</div>
+              </div>
+              <div class="podium-score">
+                <div class="value">${escapeHtml(formatNumber(item.pt))}</div>
+                <div class="unit">${scoreLabel}</div>
+              </div>
+            </div>
+            <h3 class="podium-name">${escapeHtml(item.name || "-")}</h3>
+            <div class="podium-id">${escapeHtml(item.memberId || "")}</div>
+            <div class="podium-foot">
+              <div class="podium-caption">${escapeHtml(getPodiumCaption(type, rank))}</div>
+              <div class="podium-chip">${badge}${item.rankLabel ? ` / ${escapeHtml(item.rankLabel)}` : ""}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderRows(target, rows, kind) {
+      if (!rows.length) {
+        target.innerHTML = `<div class="empty">表示できるデータがありません</div>`;
+        return;
+      }
+
+      target.innerHTML = rows.map(item => {
+        const shouldHighlight =
+          state.highlightedMemberId &&
+          normalizeText(item.memberId) === normalizeText(state.highlightedMemberId);
+
+        return `
+          <div class="row ${shouldHighlight ? "highlighted" : ""}" data-kind="${escapeHtml(kind)}" data-member-id="${escapeHtml(item.memberId || "")}">
+            <div class="rank-pill ${rankClass(item.rank)}">${escapeHtml(item.rank)}位</div>
+            <div class="member">
+              <div class="name">${escapeHtml(item.name || "-")}</div>
+              <div class="id">${escapeHtml(item.memberId || "")}${item.rankLabel ? ` / ${escapeHtml(item.rankLabel)}` : ""}</div>
+            </div>
+            <div class="score">
+              <div class="value">${escapeHtml(formatNumber(item.pt))}</div>
+              <div class="unit">pt</div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function formatDateTimeJST(date) {
+      return new Intl.DateTimeFormat("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).format(date);
+    }
+
+    function getJSTNowParts(date = new Date()) {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Tokyo",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).formatToParts(date);
+
+      const obj = {};
+      parts.forEach(part => {
+        if (part.type !== "literal") obj[part.type] = part.value;
+      });
+      return obj;
+    }
+
+    function getWeekResetCountdown() {
+      const now = new Date();
+      const parts = getJSTNowParts(now);
+
+      const jYear = Number(parts.year);
+      const jMonth = Number(parts.month);
+      const jDay = Number(parts.day);
+      const weekdayShort = parts.weekday;
+      const jHour = Number(parts.hour);
+      const jMinute = Number(parts.minute);
+      const jSecond = Number(parts.second);
+
+      const weekMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const weekday = weekMap[weekdayShort] ?? 0;
+
+      const resetDateUtc = new Date(Date.UTC(jYear, jMonth - 1, jDay, -9, 0, 0));
+      const nextResetUtc = new Date(resetDateUtc);
+
+      const addDays = weekday === 0 && (jHour > 0 || jMinute > 0 || jSecond > 0) ? 7 : (7 - weekday) % 7;
+      nextResetUtc.setUTCDate(nextResetUtc.getUTCDate() + addDays);
+
+      const diff = nextResetUtc.getTime() - now.getTime();
+      const safeDiff = Math.max(0, diff);
+
+      const days = Math.floor(safeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((safeDiff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((safeDiff / (1000 * 60)) % 60);
+      const seconds = Math.floor((safeDiff / 1000) % 60);
+
+      return { days, hours, minutes, seconds, nextResetUtc };
+    }
+
+    function updateCountdown() {
+      const { days, hours, minutes, seconds, nextResetUtc } = getWeekResetCountdown();
+
+      el.daysValue.textContent = String(days);
+      el.hoursValue.textContent = String(hours).padStart(2, "0");
+      el.minutesValue.textContent = String(minutes).padStart(2, "0");
+      el.secondsValue.textContent = String(seconds).padStart(2, "0");
+      el.nextResetMain.textContent = `${String(hours + days * 24).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+      el.weeklyResetLabel.textContent = "日曜 0:00 更新";
+
+      const resetLabel = new Intl.DateTimeFormat("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        month: "numeric",
+        day: "numeric",
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).format(nextResetUtc);
+
+      el.resetDetailText.textContent = `次の週間リセットは ${resetLabel}（JST）です。今週の順位はこのタイミングで切り替わります。`;
+    }
+
+    function findPlayer(query) {
+      const q = normalizeText(query);
+      if (!q) return null;
+
+      const players = Array.from(state.playersMap.values());
+
+      const exact = players.find(player =>
+        normalizeText(player.memberId) === q || normalizeText(player.name) === q
+      );
+      if (exact) return exact;
+
+      const partial = players.filter(player =>
+        player.searchTokens.some(token => token && token.includes(q))
+      );
+
+      if (!partial.length) return null;
+
+      partial.sort((a, b) => {
+        const aScore =
+          (normalizeText(a.memberId).startsWith(q) ? 100 : 0) +
+          (normalizeText(a.name).startsWith(q) ? 90 : 0) +
+          (normalizeText(a.memberId).includes(q) ? 40 : 0) +
+          (normalizeText(a.name).includes(q) ? 30 : 0);
+
+        const bScore =
+          (normalizeText(b.memberId).startsWith(q) ? 100 : 0) +
+          (normalizeText(b.name).startsWith(q) ? 90 : 0) +
+          (normalizeText(b.memberId).includes(q) ? 40 : 0) +
+          (normalizeText(b.name).includes(q) ? 30 : 0);
+
+        if (bScore !== aScore) return bScore - aScore;
+        return a.totalPt - b.totalPt;
+      });
+
+      return partial[0];
+    }
+
+    function getMomentumText(player) {
+      const hasWeekly = player.weeklyRank !== "";
+      const hasTotal = player.totalRank !== "";
+
+      if (hasWeekly && Number(player.weeklyRank) === 1) {
+        return "今週の首位です。最も目立つ場所に立っています。";
+      }
+      if (hasWeekly && Number(player.weeklyRank) <= 3) {
+        return "今週の表彰圏です。明確に上位層に入っています。";
+      }
+      if (hasWeekly && Number(player.weeklyRank) <= 10) {
+        return "今週のTOP10圏内です。このまま維持でも十分に存在感があります。";
+      }
+      if (hasTotal && Number(player.totalRank) <= 3) {
+        return "総合で表彰圏です。継続の強さがそのまま順位に出ています。";
+      }
+      if (hasTotal && Number(player.totalRank) <= 10) {
+        return "総合TOP10圏内です。CCL内でかなり強い位置にいます。";
+      }
+      if (hasWeekly) {
+        return "今週のランキングに入っています。ここから上位を狙える位置です。";
+      }
+      if (hasTotal) {
+        return "総合ランキングに入っています。積み上げがしっかり可視化されています。";
+      }
+      return "現在この公開範囲のランキングでは上位表示外です。ここから一気に食い込めます。";
+    }
+
+    function renderSearchResult(player, query) {
+      if (!player) {
+        state.highlightedMemberId = "";
+        state.highlightedName = "";
+        rerenderListsOnly();
+
+        el.searchResult.className = "search-empty";
+        el.searchResult.innerHTML = `「${escapeHtml(query)}」に一致するメンバーが見つかりませんでした。<br />member_id または Discord名の一部で検索してください。`;
+        return;
+      }
+
+      state.highlightedMemberId = player.memberId || "";
+      state.highlightedName = player.name || "";
+      rerenderListsOnly();
+
+      const weeklyRankText = player.weeklyRank ? `${escapeHtml(player.weeklyRank)}位` : "圏外";
+      const totalRankText = player.totalRank ? `${escapeHtml(player.totalRank)}位` : "圏外";
+      const rankLabelText = player.rankLabel ? escapeHtml(player.rankLabel) : "未設定";
+      const momentumText = escapeHtml(getMomentumText(player));
+
+      el.searchResult.className = "";
+      el.searchResult.innerHTML = `
+        <article class="player-card">
+          <div class="player-top">
+            <div class="player-meta">
+              <div class="player-identity">
+                <h3 class="player-name">${escapeHtml(player.name || "-")}</h3>
+                <div class="player-id">${escapeHtml(player.memberId || "")}</div>
+              </div>
+              <div class="player-rank-badge">ランク / ${rankLabelText}</div>
+            </div>
+
+            <div class="player-highlights">
+              <div class="highlight-card">
+                <div class="label">総合順位</div>
+                <div class="value">${totalRankText}</div>
+                <div class="note">累計ポイントでの現在地</div>
+              </div>
+              <div class="highlight-card">
+                <div class="label">総合 pt</div>
+                <div class="value">${escapeHtml(formatNumber(player.totalPt))}</div>
+                <div class="note">積み上げた総量</div>
+              </div>
+              <div class="highlight-card">
+                <div class="label">週間順位</div>
+                <div class="value">${weeklyRankText}</div>
+                <div class="note">今週の勝負位置</div>
+              </div>
+              <div class="highlight-card">
+                <div class="label">週間 pt</div>
+                <div class="value">${escapeHtml(formatNumber(player.weeklyPt))}</div>
+                <div class="note">今週の活動量</div>
+              </div>
+            </div>
+          </div>
+          <div class="player-foot">
+            ${momentumText}
+          </div>
+        </article>
+      `;
+
+      requestAnimationFrame(() => {
+        const matchRows = document.querySelectorAll(`.row[data-member-id="${cssEscape(player.memberId || "")}"]`);
+        if (matchRows.length) {
+          matchRows[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    }
+
+    function cssEscape(value) {
+      if (window.CSS && typeof window.CSS.escape === "function") {
+        return window.CSS.escape(value);
+      }
+      return String(value).replace(/["\\]/g, "\\$&");
+    }
+
+    function renderTopAndLists() {
+      const weeklySplit = splitTop3(state.weeklyRows);
+      const totalSplit = splitTop3(state.totalRows);
+
+      renderPodiums(el.weeklyTop3, weeklySplit.top3, "weekly");
+      renderPodiums(el.totalTop3, totalSplit.top3, "total");
+      renderRows(el.weeklyList, weeklySplit.rest, "weekly");
+      renderRows(el.totalList, totalSplit.rest, "total");
+
+      el.weeklyListMeta.textContent = `${state.weeklyRows.length}名表示`;
+      el.totalListMeta.textContent = `${state.totalRows.length}名表示`;
+    }
+
+    function rerenderListsOnly() {
+      const weeklySplit = splitTop3(state.weeklyRows);
+      const totalSplit = splitTop3(state.totalRows);
+
+      renderRows(el.weeklyList, weeklySplit.rest, "weekly");
+      renderRows(el.totalList, totalSplit.rest, "total");
+    }
+
+    function setLoadingState() {
+      el.weeklyTop3.innerHTML = `<div class="loading">週間ランキングを読み込み中...</div>`;
+      el.totalTop3.innerHTML = `<div class="loading">総合ランキングを読み込み中...</div>`;
+      el.weeklyList.innerHTML = `<div class="loading">読み込み中...</div>`;
+      el.totalList.innerHTML = `<div class="loading">読み込み中...</div>`;
+      el.weeklyListMeta.textContent = "読み込み中...";
+      el.totalListMeta.textContent = "読み込み中...";
+      el.searchResult.className = "search-loading";
+      el.searchResult.innerHTML = `ランキングデータを読み込み中...`;
+      el.heroStatusText.textContent = "LOADING";
+      el.lastUpdatedText.textContent = "取得中...";
+    }
+
+    function setErrorState(message) {
+      const errorHtml = `
+        <div class="error-box">
+          ${escapeHtml(message)}<br />
+          <button class="retry-button" type="button" onclick="loadCSV()">再読み込み</button>
+        </div>
+      `;
+      el.weeklyTop3.innerHTML = errorHtml;
+      el.totalTop3.innerHTML = errorHtml;
+      el.weeklyList.innerHTML = errorHtml;
+      el.totalList.innerHTML = errorHtml;
+      el.weeklyListMeta.textContent = "取得失敗";
+      el.totalListMeta.textContent = "取得失敗";
+      el.searchResult.className = "search-error";
+      el.searchResult.innerHTML = `データ取得に失敗したため検索できません。`;
+      el.heroStatusText.textContent = "ERROR";
+      el.lastUpdatedText.textContent = "取得失敗";
+    }
+
+    async function fetchCSVText(url) {
+      const response = await fetch(url, {
+        method: "GET",
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error(`CSVの取得に失敗しました（${response.status}）`);
+      }
+
+      return response.text();
+    }
+
+    function buildRows(parsedRows) {
+      if (!parsedRows || parsedRows.length < 2) {
+        throw new Error("CSVデータが空です");
+      }
+
+      const weeklyRows = [];
+      const totalRows = [];
+
+      for (let i = 1; i < parsedRows.length; i++) {
+        const row = parsedRows[i] || [];
+
+        const weeklyRank = (row[0] || "").replace(/^"|"$/g, "").trim();
+        const weeklyMemberId = (row[1] || "").replace(/^"|"$/g, "").trim();
+        const weeklyName = (row[2] || "").replace(/^"|"$/g, "").trim();
+        const weeklyPt = (row[3] || "").replace(/^"|"$/g, "").trim();
+        const weeklyRankLabel = (row[4] || "").replace(/^"|"$/g, "").trim();
+
+        const totalRank = (row[6] || "").replace(/^"|"$/g, "").trim();
+        const totalMemberId = (row[7] || "").replace(/^"|"$/g, "").trim();
+        const totalName = (row[8] || "").replace(/^"|"$/g, "").trim();
+        const totalPt = (row[9] || "").replace(/^"|"$/g, "").trim();
+        const totalRankLabel = (row[10] || "").replace(/^"|"$/g, "").trim();
+
+        if (weeklyRank) {
+          weeklyRows.push({
+            rank: weeklyRank,
+            memberId: weeklyMemberId,
+            name: weeklyName,
+            pt: weeklyPt,
+            rankLabel: weeklyRankLabel
+          });
+        }
+
+        if (totalRank) {
+          totalRows.push({
+            rank: totalRank,
+            memberId: totalMemberId,
+            name: totalName,
+            pt: totalPt,
+            rankLabel: totalRankLabel
+          });
+        }
+      }
+
+      weeklyRows.sort((a, b) => Number(a.rank) - Number(b.rank) || toNumber(b.pt) - toNumber(a.pt));
+      totalRows.sort((a, b) => Number(a.rank) - Number(b.rank) || toNumber(b.pt) - toNumber(a.pt));
+
+      return { weeklyRows, totalRows };
+    }
+
+    async function loadCSV() {
+      setLoadingState();
+
+      try {
+        const cacheBuster = `_=${Date.now()}`;
+        const url = CSV_URL + (CSV_URL.includes("?") ? "&" : "?") + cacheBuster;
+        const text = await fetchCSVText(url);
+        const parsedRows = parseCSV(text);
+        const { weeklyRows, totalRows } = buildRows(parsedRows);
+
+        state.weeklyRows = weeklyRows;
+        state.totalRows = totalRows;
+        state.playersMap = buildPlayersMap(weeklyRows, totalRows);
+        state.loaded = true;
+        state.lastFetchDate = new Date();
+
+        renderTopAndLists();
+
+        el.heroWeeklyCount.textContent = String(weeklyRows.length);
+        el.heroTotalCount.textContent = String(totalRows.length);
+        el.heroStatusText.textContent = "LIVE";
+        el.lastUpdatedText.textContent = formatDateTimeJST(state.lastFetchDate);
+        el.footerSourceText.textContent = "Source: site_ranking (Google Sheets CSV)";
+        el.searchResult.className = "search-empty";
+        el.searchResult.innerHTML = `member_id または Discord名で検索してください。<br />一致したメンバーの週間順位・総合順位・pt・ランクを表示します。`;
+
+        const currentQuery = el.searchInput.value.trim();
+        if (currentQuery) {
+          renderSearchResult(findPlayer(currentQuery), currentQuery);
+        }
+
+      } catch (error) {
+        console.error(error);
+        setErrorState("ランキングデータの読み込みに失敗しました。CSV URLまたは公開設定を確認してください。");
+      }
+    }
+
+    function handleSearchInput() {
+      if (!state.loaded) return;
+
+      const query = el.searchInput.value.trim();
+
+      if (!query) {
+        state.highlightedMemberId = "";
+        state.highlightedName = "";
+        rerenderListsOnly();
+        el.searchResult.className = "search-empty";
+        el.searchResult.innerHTML = `member_id または Discord名で検索してください。<br />一致したメンバーの週間順位・総合順位・pt・ランクを表示します。`;
+        return;
+      }
+
+      const player = findPlayer(query);
+      renderSearchResult(player, query);
+    }
+
+    el.searchInput.addEventListener("input", handleSearchInput);
+    el.searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      handleSearchInput();
+    });
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
     loadCSV();
   </script>
 </body>
